@@ -10,12 +10,28 @@ const connection = mysql.createConnection({
 
 connection.connect();
 
-connection.query("SELECT 1 + 1 AS solution", (error, results, fields) => {
-   if (error) {
-      console.log(error);
-   } else {
-      console.log("The solution is: ", results[0].solution);
+connection.query(
+   `
+    SELECT 
+        id, 
+        email, 
+        created_at 
+    FROM 
+        users 
+    WHERE 
+        email = 'mike@nv.ccsd.net' 
+    AND 
+        password = 'mikmikmik' 
+    LIMIT 1
+   `,
+
+   (err, res) => {
+      if (err) {
+         console.log(err);
+      } else {
+         console.log(res);
+      }
    }
-});
+);
 
 connection.end();
