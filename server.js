@@ -1,5 +1,7 @@
 require("dotenv").config();
 const mysql = require("mysql");
+const selectUser = require("./queries/selectUser");
+const { toJson, toSafeParse } = require("./utils/helpers");
 
 const connection = mysql.createConnection({
    host: process.env.RDS_HOST,
@@ -10,28 +12,23 @@ const connection = mysql.createConnection({
 
 connection.connect();
 
-connection.query(
-   `
-    SELECT 
-        id, 
-        email, 
-        created_at 
-    FROM 
-        users 
-    WHERE 
-        email = 'mike@nv.ccsd.net' 
-    AND 
-        password = 'mikmikmik' 
-    LIMIT 1
-   `,
-
-   (err, res) => {
-      if (err) {
-         console.log(err);
-      } else {
-         console.log(res);
-      }
+connection.query(selectUser("mike@nv.ccsd.net", "mikmikmik"), (err, res) => {
+   if (err) {
+      console.log(err);
+   } else {
+      //   const user = toSafeParse(toJson(res))[0]; //res is response //calling this user instead of users even though it's an array because we are only returning the first one in the array
+      const jsonRes = toJson(res);
+      console.log(`This is now a string: `, jsonRes);
+      const parsedRes = toSafeParse(jsonRes);
+      console.log(`Here is the parsedRes: `, parsedRes);
+      const firstObj = parsedRes[0];
+      const user = firstObj;
+      console.log(`here is just the user: `, user);
    }
-);
+});
+
+//if you collect anything else from the user, return that as well, because this is all going to be stored inside of our redux state
 
 connection.end();
+
+//convert a RowDataPacket to a standard object: 31 minutes into 340A
