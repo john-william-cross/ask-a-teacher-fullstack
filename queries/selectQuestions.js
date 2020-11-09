@@ -1,8 +1,8 @@
 module.exports = function selectQuestions() {
    return `
-    SELECT 
-        *
-    FROM
-        questions;
+        SELECT 
+            *
+        FROM
+            questions;
     `;
 };
