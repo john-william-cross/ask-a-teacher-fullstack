@@ -31,6 +31,15 @@ connection.query(selectUser("mike@nv.ccsd.net", "mikmikmik"), (err, res) => {
 
 //if you collect anything else from the user, return that as well, because this is all going to be stored inside of our redux state
 
+app.get("/", (req, res) => {
+   res.send("Hello World!");
+});
+
 connection.end();
+
+const port = process.env.PORT || 3040;
+app.listen(port, () => {
+   console.log(`Server Running at http://localhost:${port}`);
+});
 
 //convert a RowDataPacket to a standard object: 31 minutes into 340A
