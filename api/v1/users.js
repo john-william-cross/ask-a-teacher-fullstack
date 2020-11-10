@@ -10,7 +10,7 @@ const { toJson, toSafeParse } = require("../../utils/helpers");
 //@access       PUBLIC
 
 router.get("/", (req, res) => {
-   db.query(selectUser("mike@nv.ccsd.net", "mikmikmik"))
+   db.query(selectUser("john@nv.ccsd.net", "johjohjoh"))
       .then((dbRes) => {
          const user = toSafeParse(toJson(dbRes))[0];
          console.log(user);
