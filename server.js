@@ -4,6 +4,7 @@ const app = express();
 //if you collect anything else from the user, return that as well, because this is all going to be stored inside of our redux state
 
 app.use("/api/v1/users", require("./api/v1/users"));
+app.use("/api/v1/questions", require("./api/v1/questions"));
 
 app.get("/", (req, res) => {
    res.send("Hello World!");
