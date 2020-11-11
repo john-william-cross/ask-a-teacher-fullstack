@@ -5,6 +5,7 @@ const app = express();
 
 app.use("/api/v1/users", require("./api/v1/users"));
 app.use("/api/v1/questions", require("./api/v1/questions"));
+// eventually a route for posting a question
 
 app.get("/", (req, res) => {
    res.send("Hello World!");
