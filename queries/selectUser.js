@@ -8,6 +8,6 @@ module.exports = function selectUser(email, password) {
              email = '${email}'
          AND 
              password = '${password}'
-         LIMIT 1
+         LIMIT 1;
      `;
 };

@@ -5,11 +5,11 @@ const db = require("../../db");
 const selectQuestions = require("../../queries/selectQuestions");
 
 // @route       GET api/v1/questions
-//@desc         Get all the questions
+//@desc         Get all the questions by desc order
 //@access       PUBLIC
 
 router.get("/", (req, res) => {
-   db.query(selectQuestions("DESC"))
+   db.query(selectQuestions("`questions`.`created_at` DESC"))
       .then((dbRes) => {
          console.log(dbRes);
          res.json(dbRes);
