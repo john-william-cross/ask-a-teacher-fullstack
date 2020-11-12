@@ -9,9 +9,9 @@ const selectQuestions = require("../../queries/selectQuestions");
 //@access       PUBLIC
 
 router.get("/", (req, res) => {
-   db.query(selectQuestions("`questions`.`created_at` DESC"));
-   console
-      .log(req.query)
+   console.log(req.query);
+   const { order } = req.query;
+   db.query(selectQuestions(order))
       .then((dbRes) => {
          res.json(dbRes);
       })
