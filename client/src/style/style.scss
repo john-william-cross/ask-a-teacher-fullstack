@@ -1,0 +1,304 @@
+//this is for things that aren't bootstrap variables
+
+.form-control {
+   resize: none;
+}
+
+a {
+   font-weight: $font-weight-bold;
+}
+
+.no-underline:hover {
+   text-decoration: none !important;
+}
+
+.logo-text-font {
+   font-family: "Playfair Display", serif;
+}
+
+.logo-text-size {
+   @include media-breakpoint-only(xs) {
+      font-size: $font-size-base;
+   }
+   @include media-breakpoint-only(sm) {
+      font-size: $font-size-base * 1.75;
+   }
+   @include media-breakpoint-only(md) {
+      font-size: $font-size-base * 2.25;
+   }
+   @include media-breakpoint-only(lg) {
+      font-size: $font-size-base * 2.5;
+   }
+   @include media-breakpoint-only(xl) {
+      font-size: $font-size-base * 3;
+      margin-top: 20px;
+   }
+}
+
+.answer-question-link {
+   line-height: 1;
+   // margin-bottom: 2px;
+   @include media-breakpoint-only(xs) {
+      font-size: 12px;
+      margin-bottom: 5px;
+      margin-right: 5px;
+   }
+   @include media-breakpoint-only(sm) {
+      font-size: 16px;
+      margin-bottom: 6px;
+      margin-right: 1px;
+      margin-left: -50px;
+   }
+   @include media-breakpoint-only(md) {
+      font-size: 16px;
+      margin-bottom: 7px;
+   }
+   @include media-breakpoint-only(lg) {
+      margin-bottom: 8px;
+      margin-left: 85px;
+   }
+   @include media-breakpoint-only(xl) {
+      margin-bottom: 10px;
+   }
+}
+.answers {
+   white-space: pre-wrap;
+   @include media-breakpoint-only(xs) {
+      font-size: 12px;
+   }
+   @include media-breakpoint-only(sm) {
+      font-size: 16px;
+      margin-bottom: 6px;
+   }
+   @include media-breakpoint-only(md) {
+      font-size: $font-size-base;
+      margin-bottom: 7px;
+   }
+   @include media-breakpoint-only(lg) {
+      margin-bottom: 8px;
+   }
+   @include media-breakpoint-only(xl) {
+      margin-bottom: 10px;
+   }
+}
+
+.linebreak {
+   white-space: prewrap;
+}
+
+.submit-new-question {
+   font-weight: bold;
+}
+.sign-up-prompt {
+   font-weight: $font-weight-bold;
+}
+
+.answer-question-link {
+   color: $white;
+   font-weight: normal;
+}
+
+.thank-you-message {
+   color: $success;
+}
+
+.logo {
+   @include media-breakpoint-only(xs) {
+      width: 20px;
+      margin-top: -10px;
+      margin-right: -5px;
+   }
+   @include media-breakpoint-only(sm) {
+      width: 30px;
+      margin-top: -20px;
+   }
+   @include media-breakpoint-only(md) {
+      width: 43px;
+      margin-top: -30px;
+   }
+   @include media-breakpoint-only(lg) {
+      width: 45px;
+      margin-top: -37px;
+   }
+   @include media-breakpoint-only(xl) {
+      width: 55px;
+      margin-top: -44px;
+   }
+}
+
+.top-questions {
+   @include media-breakpoint-only(xs) {
+      font-size: $font-size-base;
+      margin-top: -40px;
+   }
+   @include media-breakpoint-only(sm) {
+   }
+   @include media-breakpoint-only(md) {
+   }
+   @include media-breakpoint-only(lg) {
+      margin-top: 20px;
+   }
+   @include media-breakpoint-only(xl) {
+   }
+}
+.dropdown {
+   @include media-breakpoint-only(xs) {
+      margin-top: -45px;
+      font-size: 12px;
+   }
+   @include media-breakpoint-only(sm) {
+   }
+   @include media-breakpoint-only(md) {
+   }
+   @include media-breakpoint-only(lg) {
+      margin-top: 30px;
+   }
+   @include media-breakpoint-only(xl) {
+      margin-top: 10px;
+   }
+}
+
+.lead {
+   @include media-breakpoint-only(xs) {
+      font-size: $font-size-base * 0.75;
+      margin-top: -20px;
+   }
+   @include media-breakpoint-only(sm) {
+      // font-size: $font-size-base * 1.5;
+   }
+   @include media-breakpoint-only(md) {
+      // font-size: $font-size-base * 2;
+   }
+   @include media-breakpoint-only(lg) {
+      // font-size: $font-size-base * 2.5;
+   }
+   @include media-breakpoint-only(xl) {
+      // fonts-size: $font-size-base * 3;
+      margin-top: 15px;
+   }
+}
+
+.landing-page-title {
+   @include media-breakpoint-only(xs) {
+      font-size: $font-size-base;
+      margin-top: -20px;
+   }
+   @include media-breakpoint-only(sm) {
+      font-size: $font-size-base * 1.5;
+   }
+   @include media-breakpoint-only(md) {
+      font-size: $font-size-base * 2;
+   }
+   @include media-breakpoint-only(lg) {
+      font-size: $font-size-base * 2.5;
+   }
+   @include media-breakpoint-only(xl) {
+      font-size: $font-size-base * 3;
+      margin-top: 15px;
+   }
+}
+.asked-on-answers-num {
+   @include media-breakpoint-only(xs) {
+      font-size: $font-size-base * 0.75;
+   }
+   @include media-breakpoint-only(sm) {
+   }
+   @include media-breakpoint-only(md) {
+   }
+   @include media-breakpoint-only(lg) {
+      margin-top: 30px;
+   }
+   @include media-breakpoint-only(xl) {
+   }
+}
+
+hr {
+   height: 2px;
+   border-width: 0;
+   color: $gray-100;
+   background-color: $gray-100;
+}
+
+.header-solid,
+.footer-solid {
+   background-color: $gray-900;
+
+   color: $white;
+   a {
+      color: white;
+   }
+}
+
+a:hover {
+   cursor: pointer;
+}
+
+#question-input-home-page {
+   box-shadow: 5px 10px 18px #888888;
+}
+
+.cancel {
+   font-weight: 300;
+   @include media-breakpoint-only(xs) {
+      font-size: 12px;
+      margin-top: 60px;
+      margin-right: -60px;
+   }
+   @include media-breakpoint-only(sm) {
+      margin-top: 52px;
+      margin-right: -95px;
+   }
+   @include media-breakpoint-only(md) {
+      margin-top: 52px;
+      margin-right: -90px;
+   }
+   @include media-breakpoint-only(lg) {
+      margin-top: 52px;
+      margin-right: -110px;
+   }
+   @include media-breakpoint-only(xl) {
+      margin-top: 52px;
+      margin-right: -110px;
+   }
+}
+.sign-out {
+   font-weight: normal;
+   @include media-breakpoint-only(xs) {
+      font-size: 12px;
+   }
+   @include media-breakpoint-only(sm) {
+      margin-right: 20px;
+      font-size: 16px;
+   }
+   @include media-breakpoint-only(md) {
+      margin-right: 5px;
+      font-size: 16px;
+   }
+
+   @include media-breakpoint-only(lg) {
+      margin-right: 12px;
+   }
+   @include media-breakpoint-only(xl) {
+      margin-right: 36px;
+   }
+}
+.contact {
+   font-weight: normal;
+   @include media-breakpoint-only(xs) {
+      font-size: 12px;
+   }
+   @include media-breakpoint-only(sm) {
+      margin-left: 12px;
+      font-size: 16px;
+   }
+   @include media-breakpoint-only(md) {
+      margin-left: 12px;
+      font-size: 16px;
+   }
+   @include media-breakpoint-only(lg) {
+      margin-left: 12px;
+   }
+   @include media-breakpoint-only(xl) {
+      margin-left: 12px;
+   }
+}
