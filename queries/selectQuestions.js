@@ -1,10 +1,10 @@
-module.exports = function selectQuestions(order) {
-   return `
+const selectQuestions = `
       SELECT 
          *
       FROM
          questions
       ORDER BY
-         ${order};
+         ?;
     `;
-};
+
+module.exports = selectQuestions;

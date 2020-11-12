@@ -11,7 +11,8 @@ const selectQuestions = require("../../queries/selectQuestions");
 router.get("/", (req, res) => {
    console.log(req.query);
    const { order } = req.query;
-   db.query(selectQuestions(order))
+   /* https://www.npmjs.com/package/mysql#escaping-query-values */
+   db.query(selectQuestions, [order])
       .then((dbRes) => {
          res.json(dbRes);
       })
