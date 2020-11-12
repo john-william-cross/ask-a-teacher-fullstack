@@ -35,23 +35,29 @@ class Questions extends React.Component {
                type: actions.STORE_ALL_QUESTIONS,
                payload: questions,
             }); //this loads the questions
-            this.setState({
-               displayedQuestions: orderBy(
-                  this.props.allQuestions,
-                  '[["totalAnswers"], ["asc"]]'
-               ),
-               allQuestions: this.props.allQuestions.map((question) => {
-                  return {
-                     totalAnswers: question.answers.length,
-                     ...question,
-                  };
-               }),
-            });
          })
          .catch((error) => {
             // handle error
             console.log(error);
          });
+   }
+
+   componentDidUpdate(prevProps) {
+      if (this.props.allQuestions !== prevProps.allQuestions) {
+         console.log("no MATCH ");
+         this.setState({
+            displayedQuestions: orderBy(
+               this.props.allQuestions,
+               '[["totalAnswers"], ["asc"]]'
+            ),
+            allQuestions: this.props.allQuestions.map((question) => {
+               return {
+                  totalAnswers: question.answers.length,
+                  ...question,
+               };
+            }),
+         });
+      }
    }
 
    //REMEMBER THAT STATE IS ALWAYS AN OBJECT
