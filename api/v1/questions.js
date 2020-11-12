@@ -9,9 +9,10 @@ const selectQuestions = require("../../queries/selectQuestions");
 //@access       PUBLIC
 
 router.get("/", (req, res) => {
-   db.query(selectQuestions("`questions`.`created_at` DESC"))
+   db.query(selectQuestions("`questions`.`created_at` DESC"));
+   console
+      .log(req.query)
       .then((dbRes) => {
-         console.log(dbRes);
          res.json(dbRes);
       })
       .catch((err) => {
