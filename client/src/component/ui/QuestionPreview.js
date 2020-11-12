@@ -41,10 +41,10 @@ function QuestionPreview(props) {
             {/* once clicked we want to grab the details of whatever question we clicked on and get the URL of the previous route ("/questions") and store it inside of redux global state (use action STORE_ANSWERABLE_QUESTION*/}
          </div>
          <p className="text-muted asked-on-answers-num float-left mb-4">
-            Asked on {toDisplayDate(props.question.createdAt, "MMMM d, y")}.
+            {/* Asked on {toDisplayDate(props.question.createdAt, "MMMM d, y")}. */}
          </p>
          <p className="text-muted asked-on-answers-num float-right">
-            {props.question.answers.length} answers
+            {/* {props.question.answers.length} answers */}
          </p>
          <div className="clearfix"></div>
 

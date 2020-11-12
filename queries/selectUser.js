@@ -11,3 +11,5 @@ module.exports = function selectUser(email, password) {
          LIMIT 1;
      `;
 };
+
+//TODO: SHOULD THIS BE CHANGED FROM A CONST TO A VAR? I THINK YES...

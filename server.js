@@ -7,7 +7,7 @@ app.use(cors());
 app.use("/api/v1/users", require("./api/v1/users"));
 app.use("/api/v1/questions", require("./api/v1/questions"));
 // eventually a route for posting a question
-
+console.log(app.use("/api/v1/questions", require("./api/v1/questions")));
 app.get("/", (req, res) => {
    res.send("Hello World!!!!");
 });

@@ -11,7 +11,9 @@ answers.user_id
 FROM
 questions
   LEFT JOIN
-answers ON questions.id = answers.question_id;
+answers ON questions.id = answers.question_id
+    ORDER BY
+    ?
     `;
 
 module.exports = selectQuestions;

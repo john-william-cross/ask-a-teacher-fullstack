@@ -28,7 +28,10 @@ class Questions extends React.Component {
          .then((res) => {
             // handle success
             const questions = res.data;
-            console.log(`here are the questions: `, questions);
+            console.log(
+               `here is a flattened pool of questions and their answers`,
+               questions
+            );
 
             console.log("STORE ALL QUESTIONS", actions.STORE_ALL_QUESTIONS);
             this.props.dispatch({
@@ -52,7 +55,7 @@ class Questions extends React.Component {
             ),
             allQuestions: this.props.allQuestions.map((question) => {
                return {
-                  totalAnswers: question.answers.length,
+                  // totalAnswers: question.answers.length,
                   ...question,
                };
             }),
