@@ -23,7 +23,7 @@ class Questions extends React.Component {
    componentDidMount() {
       axios
          .get(
-            "https://raw.githubusercontent.com/john-william-cross/ask-a-teacher-mpa/91c2d6c7d7188433516473d1b85885a9b3611136/src/mock-data/questions.json"
+            "http://localhost:3040/api/v1/questions?order=%60questions%60.%60created_at%60%20DESC"
          )
          .then((res) => {
             // handle success
