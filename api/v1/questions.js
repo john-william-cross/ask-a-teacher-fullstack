@@ -12,12 +12,14 @@ const { toJson, toSafeParse } = require("../../utils/helpers");
 router.get("/", (req, res) => {
    console.log(req.query);
    const { order } = req.query;
+
    /* https://www.npmjs.com/package/mysql#escaping-query-values */
    db.query(selectQuestions, [order])
       .then((dbRes) => {
          const questions = toSafeParse(toJson(dbRes));
          res.json(dbRes);
-         console.log(questions);
+
+         console.log(`HERE ARE THE QUESTIONS: `, questions);
       })
       .catch((err) => {
          console.log(err);
