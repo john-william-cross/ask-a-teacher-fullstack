@@ -19,7 +19,6 @@ class Questions extends React.Component {
          allQuestions: [],
       };
    }
-   //TODO: CREATE LOGOUT BUTTON ON ALL PAGES EXCEPT LANDING MAYBE
    componentDidMount() {
       axios
          .get(

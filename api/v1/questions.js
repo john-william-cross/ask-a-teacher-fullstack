@@ -26,15 +26,12 @@ router.get("/", (req, res) => {
          // });
          // console.log(questionData);
 
-         const questionsWithAnswersProp = questions.map((question) => {
+         questionsWithAnswersProp = questions.map((question) => {
             question.answers = [];
             return questions;
          });
 
          console.log(questionsWithAnswersProp);
-         // console.log(`Here are the unique questions: `, [
-         //    ...new Set(questionData),
-         // ]);
       })
       .catch((err) => {
          console.log(err);
