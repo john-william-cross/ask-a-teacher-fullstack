@@ -4,6 +4,7 @@ const router = express.Router();
 const db = require("../../db");
 const selectQuestions = require("../../queries/selectQuestions");
 const { toJson, toSafeParse } = require("../../utils/helpers");
+const uniqBy = require("lodash/uniqBy");
 
 // @route       GET api/v1/questions
 //@desc         Get all the questions by desc order
@@ -16,29 +17,46 @@ router.get("/", (req, res) => {
    /* https://www.npmjs.com/package/mysql#escaping-query-values */
    db.query(selectQuestions, [order])
       .then((dbRes) => {
-         const questions = toSafeParse(toJson(dbRes));
-         res.json(dbRes);
+         const questionsAndAnswers = toSafeParse(toJson(dbRes));
 
-         console.log(`HERE ARE THE QUESTIONS: `, questions);
+         // console.log(`HERE ARE THE AndAnswers: `, questions);
 
          // const questionData = questions.map((questionKey) => {
          //    return questionKey.question_text;
          // });
          // console.log(questionData);
 
-         questionsWithAnswersProp = questions.map((question) => {
-            question.answers = [];
-            return questions;
-            // this is creating another array layer around the questions array; it also outputs 36 question objects because it's returning all questions each time it maps over questions.
-
-            // returning just question.answers = [] doesn't work
-            // nested for loop needed?
-
-            // I want a prop called answers for each question object in questions array
-            // push answer_text into the answers array
+         const questions = questionsAndAnswers.map((question) => {
+            return {
+               id: question.question_id,
+               text: question.question_text,
+               createdAt: question.question_created_at,
+               answers: [],
+            };
          });
 
-         console.log("\n\nAdded answers prop: ", questionsWithAnswersProp);
+         console.log(questions);
+
+         const uniqQuestions = uniqBy(questions, `id`);
+
+         questionsAndAnswers.forEach((questionAndAnswer) => {
+            // looking at each questionAndAnswer
+            // find the question that matches this questionAndAnswer from uniqQuestions
+            const question = uniqQuestions.find((question) => {
+               return question.id === questionAndAnswer.question_id;
+            });
+            console.log(`questionAndAnswer: `, questionAndAnswer);
+            // console.log(`Here is a question: `, question);
+            question.answers = question.answers.concat({
+               id: questionAndAnswer.answer_id,
+               text: questionAndAnswer.answer_text,
+               answeredAt: questionAndAnswer.answered_at,
+               userId: questionAndAnswer.user_id,
+               //TODO add home state
+            });
+         });
+         console.log(`Here are the UNIQ QUESTIONS: `, uniqQuestions);
+         res.json(uniqQuestions);
       })
       .catch((err) => {
          console.log(err);
