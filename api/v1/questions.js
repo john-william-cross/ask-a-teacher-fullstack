@@ -20,6 +20,21 @@ router.get("/", (req, res) => {
          res.json(dbRes);
 
          console.log(`HERE ARE THE QUESTIONS: `, questions);
+
+         // const questionData = questions.map((questionKey) => {
+         //    return questionKey.question_text;
+         // });
+         // console.log(questionData);
+
+         const answers = questions.map((question) => {
+            question.answers = [];
+            return questions;
+         });
+
+         console.log(answers);
+         // console.log(`Here are the unique questions: `, [
+         //    ...new Set(questionData),
+         // ]);
       })
       .catch((err) => {
          console.log(err);
