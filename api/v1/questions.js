@@ -29,9 +29,13 @@ router.get("/", (req, res) => {
          questionsWithAnswersProp = questions.map((question) => {
             question.answers = [];
             return questions;
+            //this is creating another array layer around the questions array; it also outputs 36 question objects because it's returning all questions each time it maps over questions.
+
+            //returning just question.answers = [] doesn't work
+            // nested for loop needed?
          });
 
-         console.log(questionsWithAnswersProp);
+         console.log("\n\nAdded answers prop: ", questionsWithAnswersProp);
       })
       .catch((err) => {
          console.log(err);
