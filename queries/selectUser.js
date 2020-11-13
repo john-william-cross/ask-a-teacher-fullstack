@@ -12,4 +12,4 @@ module.exports = function selectUser(email, password) {
      `;
 };
 
-//TODO: SHOULD THIS BE CHANGED FROM A CONST TO A VAR? I THINK YES...
+//TODO: SHOULD THIS BE CHANGED FROM A CONST TO A VAR?
