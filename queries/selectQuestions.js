@@ -16,7 +16,7 @@ FROM
 		LEFT JOIN
 	users ON users.id = answers.user_id
 ORDER BY
-	question_created_at DESC;
+	?;
    `;
 
 module.exports = selectQuestions;
