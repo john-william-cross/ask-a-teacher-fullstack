@@ -120,7 +120,6 @@ class SignUp extends React.Component {
             createdAt: Date.now(),
          };
          console.log("Created user object for POST: ", user);
-
          // Mimic API response:
          axios
             .get(
