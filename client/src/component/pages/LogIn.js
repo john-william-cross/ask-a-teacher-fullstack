@@ -90,7 +90,7 @@ class LogIn extends React.Component {
                this.props.dispatch({
                   type: actions.UPDATE_CURRENT_USER,
                   payload: res.data,
-               }); // this doesn't store user
+               });
             })
             .catch((error) => {
                // handle error
