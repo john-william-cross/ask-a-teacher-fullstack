@@ -96,7 +96,7 @@ class Questions extends React.Component {
                            className="float-right dropdown col-5 form-control pl-0 form-control-lg"
                            onChange={(e) => this.setOrder(e)}
                         >
-                           <option value='[["createdAt"], ["asc"]]'>
+                           <option value='[["createdAt"], ["desc"]]'>
                               Newest
                            </option>
                            <option value='[["totalAnswers"], ["asc"]]'>

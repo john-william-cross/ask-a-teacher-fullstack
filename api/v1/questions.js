@@ -52,7 +52,7 @@ router.get("/", (req, res) => {
                text: questionAndAnswer.answer_text,
                answeredAt: questionAndAnswer.answered_at,
                userId: questionAndAnswer.user_id,
-               //TODO add home state
+               userHomeState: questionAndAnswer.user_home_state,
             });
          });
          console.log(`Here are the UNIQ QUESTIONS: `, uniqQuestions);
