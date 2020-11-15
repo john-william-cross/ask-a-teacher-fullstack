@@ -15,7 +15,7 @@ router.get("/", (req, res) => {
    const { order } = req.query;
 
    /* https://www.npmjs.com/package/mysql#escaping-query-values */
-   db.query(selectQuestions, [order])
+   db.query(selectQuestions(), [order])
       .then((dbRes) => {
          const questionsAndAnswers = toSafeParse(toJson(dbRes));
 
