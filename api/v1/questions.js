@@ -16,8 +16,8 @@ router.get("/", (req, res) => {
 
    /* https://www.npmjs.com/package/mysql#escaping-query-values */
    db.query(selectQuestions, [order])
-      .then((dbRes) => {
-         const questionsAndAnswers = toSafeParse(toJson(dbRes));
+      .then((questions) => {
+         const questionsAndAnswers = toSafeParse(toJson(questions));
          // 24 minutes into 345A... let constructedSearchTerm, if (searchTerm === '') {constructedSearchTerm...} ... ask when we handle searches?
 
          // console.log(`HERE ARE THE AndAnswers: `, questions);
@@ -27,18 +27,20 @@ router.get("/", (req, res) => {
          // });
          // console.log(questionData);
 
-         const questions = questionsAndAnswers.map((question) => {
-            return {
-               id: question.question_id,
-               text: question.question_text,
-               createdAt: question.question_created_at,
-               answers: [],
-            };
-         });
+         const camelCasedQuestionsAndAnswers = questionsAndAnswers.map(
+            (question) => {
+               return {
+                  id: question.question_id,
+                  text: question.question_text,
+                  createdAt: question.question_created_at,
+                  answers: [],
+               };
+            }
+         );
 
-         console.log(questions);
+         console.log(camelCasedQuestionsAndAnswers);
 
-         const uniqQuestions = uniqBy(questions, `id`);
+         const uniqQuestions = uniqBy(camelCasedQuestionsAndAnswers, `id`);
 
          questionsAndAnswers.forEach((questionAndAnswer) => {
             // looking at each questionAndAnswer
