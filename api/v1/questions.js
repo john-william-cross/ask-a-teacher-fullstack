@@ -15,9 +15,10 @@ router.get("/", (req, res) => {
    const { order } = req.query;
 
    /* https://www.npmjs.com/package/mysql#escaping-query-values */
-   db.query(selectQuestions(), [order])
+   db.query(selectQuestions, [order])
       .then((dbRes) => {
          const questionsAndAnswers = toSafeParse(toJson(dbRes));
+         // 24 minutes into 345A... let constructedSearchTerm, if (searchTerm === '') {constructedSearchTerm...} ... ask when we handle searches?
 
          // console.log(`HERE ARE THE AndAnswers: `, questions);
 
