@@ -21,9 +21,7 @@ class Questions extends React.Component {
    }
    componentDidMount() {
       axios
-         .get(
-            "http://localhost:3040/api/v1/questions?order=%60questions%60.%60created_at%60%20DESC"
-         )
+         .get("/api/v1/questions?order=%60questions%60.%60created_at%60%20DESC")
          .then((res) => {
             // handle success
             const questions = res.data;
