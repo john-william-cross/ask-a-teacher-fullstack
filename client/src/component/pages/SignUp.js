@@ -119,6 +119,15 @@ class SignUp extends React.Component {
             createdAt: Date.now(),
          };
          // post to API
+         axios
+            .post("/api/v1/users", user)
+            .then((res) => {
+               console.log(res);
+            })
+            .catch((err) => {
+               console.log(err);
+            });
+
          // Update currentUser in global state with API response
          // Go to next page: this.props.history.push("/questions");
 
