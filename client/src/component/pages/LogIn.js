@@ -3,7 +3,6 @@ import Header from "../ui/Header";
 import Footer from "../ui/Footer";
 
 import classnames from "classnames";
-import hash from "object-hash";
 import { v4 as getUuid } from "uuid";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -74,7 +73,7 @@ class LogIn extends React.Component {
             //creating that user here
             id: getUuid(),
             email: emailInput,
-            password: hash(passwordInput),
+            password: passwordInput,
             createdAt: Date.now(),
          };
          console.log("Created user object for POST: ", user);

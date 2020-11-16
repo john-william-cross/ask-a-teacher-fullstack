@@ -1,9 +1,7 @@
 import React from "react";
 import Header from "../ui/Header";
 import Footer from "../ui/Footer";
-
 import classnames from "classnames";
-import hash from "object-hash";
 import { v4 as getUuid } from "uuid";
 import axios from "axios";
 import actions from "../../store/actions";
