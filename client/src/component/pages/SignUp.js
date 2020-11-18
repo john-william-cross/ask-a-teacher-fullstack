@@ -19,25 +19,25 @@ class SignUp extends React.Component {
          hasPasswordError: false,
       };
    }
-   componentDidMount() {
-      axios
-         .get(
-            "https://raw.githubusercontent.com/john-william-cross/ask-a-teacher-mpa/master/src/mock-data/currentUser.json"
-         )
-         .then((res) => {
-            // handle success
-            const currentUser = res.data;
-            console.log(`currentUser: `, currentUser);
-            this.props.dispatch({
-               type: actions.UPDATE_CURRENT_USER,
-               payload: res.data,
-            }); // this doesn't store user
-         })
-         .catch((error) => {
-            // handle error
-            console.log(error);
-         });
-   }
+   // componentDidMount() {
+   //    axios
+   //       .get(
+   //          "https://raw.githubusercontent.com/john-william-cross/ask-a-teacher-mpa/master/src/mock-data/currentUser.json"
+   //       )
+   //       .then((res) => {
+   //          // handle success
+   //          const currentUser = res.data;
+   //          console.log(`currentUser: `, currentUser);
+   //          this.props.dispatch({
+   //             type: actions.UPDATE_CURRENT_USER,
+   //             payload: res.data,
+   //          }); // this doesn't store user
+   //       })
+   //       .catch((error) => {
+   //          // handle error
+   //          console.log(error);
+   //       });
+   // }
 
    async setEmailState(emailInput) {
       const lowerCasedEmailInput = emailInput.toLowerCase();
@@ -118,21 +118,12 @@ class SignUp extends React.Component {
             password: passwordInput,
             createdAt: Date.now(),
          };
-
+         console.log("Created user object for POST: ", user);
          // post to API
-         axios
-            .post("/api/v1/users", user)
-            .then((res) => {
-               console.log(res);
-            })
-            .catch((err) => {
-               console.log(err);
-            });
-
-         // Update currentUser in global state with API response
+         // Update current user in global state with API Response
          // Go to next page: this.props.history.push("/questions");
 
-         console.log("Created user object for POST: ", user);
+         // Update currentUser in global state with API response
       }
    }
 
