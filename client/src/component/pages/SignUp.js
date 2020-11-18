@@ -72,7 +72,7 @@ class SignUp extends React.Component {
       // console.log(passwordInput);
 
       const uniqChars = [...new Set(passwordInput)];
-      console.log(uniqChars);
+      // console.log("why,", uniqChars);
 
       if (passwordInput === "") {
          this.setState({
@@ -168,6 +168,7 @@ class SignUp extends React.Component {
                            <p className="mt-5">Create a password</p>
                            <p className="text-muted line-height-0">
                               Password must be at least 9 characters
+                              <br />
                            </p>
 
                            <input
