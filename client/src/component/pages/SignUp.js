@@ -69,7 +69,7 @@ class SignUp extends React.Component {
    }
 
    async setPasswordState(passwordInput, emailInput) {
-      console.log(passwordInput);
+      // console.log(passwordInput);
 
       const uniqChars = [...new Set(passwordInput)];
       console.log(uniqChars);
@@ -118,7 +118,6 @@ class SignUp extends React.Component {
             password: passwordInput,
             createdAt: Date.now(),
          };
-         console.log("Created user object for POST: ", user);
 
          // post to API
          axios

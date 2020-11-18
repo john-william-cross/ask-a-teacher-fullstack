@@ -2,7 +2,6 @@ import actions from "../actions";
 
 export default function answerableQuestion(answerableQuestion = {}, action) {
    // action.payload, action.type
-   console.log("should this be firing already?");
    let newAnswerableQuestion = { ...answerableQuestion };
    switch (action.type) {
       case actions.STORE_ANSWERABLE_QUESTION:

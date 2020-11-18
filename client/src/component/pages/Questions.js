@@ -25,10 +25,10 @@ class Questions extends React.Component {
          .then((res) => {
             // handle success
             const questions = res.data;
-            console.log(
-               `here is a flattened pool of questions and their answers`,
-               questions
-            );
+            // console.log(
+            //    `here is a flattened pool of questions and their answers`,
+            //    questions
+            // );
 
             console.log("STORE ALL QUESTIONS", actions.STORE_ALL_QUESTIONS);
             this.props.dispatch({
@@ -44,7 +44,7 @@ class Questions extends React.Component {
 
    componentDidUpdate(prevProps) {
       if (this.props.allQuestions !== prevProps.allQuestions) {
-         console.log("no MATCH ");
+         // console.log("no MATCH ");
          this.setState({
             displayedQuestions: orderBy(
                this.props.allQuestions,

@@ -76,7 +76,7 @@ class LogIn extends React.Component {
             password: passwordInput,
             createdAt: Date.now(),
          };
-         console.log("Created user object for POST: ", user);
+         // console.log("Created user object for POST: ", user);
          // Mimic API response:
          axios
             .get(
