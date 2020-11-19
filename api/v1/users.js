@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 const db = require("../../db");
 const selectUser = require("../../queries/selectUser");
-const { toJson, toSafeParse } = require("../../utils/helpers");
+const { toJson, toSafeParse, toHash } = require("../../utils/helpers");
 
 // @route       GET api/v1/users
 // @desc        Get a valid user via email and password
@@ -25,8 +25,10 @@ router.get("/", (req, res) => {
 // @route       POST api/v1/users
 // @desc        create a new user
 // @access      PUBLIC
-router.post("/", (req, res) => {
+router.post("/", async (req, res) => {
    const user = req.body;
+   const newPassword = toHash(user.password, 11);
+   user.password = newPassword;
    console.log(user);
 });
 
