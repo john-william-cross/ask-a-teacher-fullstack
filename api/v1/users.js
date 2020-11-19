@@ -29,6 +29,7 @@ router.post("/", async (req, res) => {
    const user = req.body;
    user.password = await toHash(user.password);
    console.log(user);
+   // create function to check for state (grab from email)
 });
 
 module.exports = router;
