@@ -26,8 +26,8 @@ router.get("/", (req, res) => {
 // @desc        create a new user
 // @access      PUBLIC
 router.post("/", (req, res) => {
-   console.log("hit api");
-   console.log(req.body);
+   const user = req.body;
+   console.log(user);
 });
 
 module.exports = router;
