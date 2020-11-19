@@ -6,8 +6,8 @@ const selectUser = require("../../queries/selectUser");
 const { toJson, toSafeParse } = require("../../utils/helpers");
 
 // @route       GET api/v1/users
-//@desc         Get a valid user via email and password
-//@access       PUBLIC
+// @desc        Get a valid user via email and password
+// @access      PUBLIC
 
 router.get("/", (req, res) => {
    db.query(selectUser("john@nv.ccsd.net", "johjohjoh"))
@@ -23,9 +23,10 @@ router.get("/", (req, res) => {
 });
 
 // @route       POST api/v1/users
-//@desc         create a new user
-//@access       PUBLIC
+// @desc        create a new user
+// @access      PUBLIC
 router.post("/", (req, res) => {
+   console.log("hit api");
    console.log(req.body);
 });
 

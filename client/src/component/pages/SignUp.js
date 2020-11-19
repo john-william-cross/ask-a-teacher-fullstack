@@ -4,7 +4,7 @@ import Footer from "../ui/Footer";
 import classnames from "classnames";
 import { v4 as getUuid } from "uuid";
 import axios from "axios";
-import actions from "../../store/actions";
+// import actions from "../../store/actions";
 import { connect } from "react-redux";
 
 //functions go in react classes
@@ -101,6 +101,14 @@ class SignUp extends React.Component {
          };
          console.log("Created user object for POST: ", user);
          // post to API
+         axios
+            .post("/api/v1/users", { text: "me" })
+            .then((res) => {
+               console.log(res);
+            })
+            .catch((err) => {
+               console.log(err);
+            });
 
          // Update current user in global state with API Response
          // Go to next page: this.props.history.push("/questions");
