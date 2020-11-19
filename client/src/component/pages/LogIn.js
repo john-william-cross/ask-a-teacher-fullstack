@@ -3,7 +3,7 @@ import Header from "../ui/Header";
 import Footer from "../ui/Footer";
 
 import classnames from "classnames";
-import { v4 as getUuid } from "uuid";
+// import { v4 as getUuid } from "uuid";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { connect } from "react-redux";
@@ -69,13 +69,13 @@ class LogIn extends React.Component {
          this.state.hasEmailError === false &&
          this.state.hasPasswordError === false
       ) {
-         const user = {
-            //creating that user here
-            id: getUuid(),
-            email: emailInput,
-            password: passwordInput,
-            createdAt: Date.now(),
-         };
+         // const user = {
+         //    //creating that user here
+         //    id: getUuid(),
+         //    email: emailInput,
+         //    password: passwordInput,
+         //    createdAt: Date.now(),
+         // };
          // console.log("Created user object for POST: ", user);
          // Mimic API response:
          axios

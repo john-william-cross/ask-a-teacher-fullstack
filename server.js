@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const path = require("path");
 
+app.use(express.json());
+
 app.use("/api/v1/users", require("./api/v1/users"));
 app.use("/api/v1/questions", require("./api/v1/questions"));
 // eventually a route for posting a question
