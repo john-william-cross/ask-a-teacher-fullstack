@@ -33,3 +33,10 @@ router.post("/", async (req, res) => {
 });
 
 module.exports = router;
+
+function getHomeState(email) {
+   let homeState = "";
+   if (email.includes("nv")) {
+      homeState = "Nevada";
+   }
+}

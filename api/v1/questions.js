@@ -11,7 +11,7 @@ const uniqBy = require("lodash/uniqBy");
 //@access       PUBLIC
 
 router.get("/", (req, res) => {
-   console.log(req.query);
+   // console.log(req.query);
    const { order } = req.query;
 
    /* https://www.npmjs.com/package/mysql#escaping-query-values */
@@ -38,7 +38,7 @@ router.get("/", (req, res) => {
             }
          );
 
-         console.log(camelCasedQuestionsAndAnswers);
+         // console.log(camelCasedQuestionsAndAnswers);
 
          const uniqQuestions = uniqBy(camelCasedQuestionsAndAnswers, `id`);
 
@@ -48,7 +48,7 @@ router.get("/", (req, res) => {
             const question = uniqQuestions.find((question) => {
                return question.id === questionAndAnswer.question_id;
             });
-            console.log(`questionAndAnswer: `, questionAndAnswer);
+            // console.log(`questionAndAnswer: `, questionAndAnswer);
             // console.log(`Here is a question: `, question);
             question.answers = question.answers.concat({
                id: questionAndAnswer.answer_id,
@@ -58,7 +58,7 @@ router.get("/", (req, res) => {
                userHomeState: questionAndAnswer.user_home_state,
             });
          });
-         console.log(`Here are the UNIQ QUESTIONS: `, uniqQuestions);
+         // console.log(`Here are the UNIQ QUESTIONS: `, uniqQuestions);
          res.json(uniqQuestions);
       })
       .catch((err) => {
