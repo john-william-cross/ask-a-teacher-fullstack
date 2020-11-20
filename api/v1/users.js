@@ -27,15 +27,30 @@ router.get("/", (req, res) => {
 // @desc        create a new user
 // @access      PUBLIC
 router.post("/", async (req, res) => {
-   const user = req.body;
-   user.password = await toHash(user.password);
-   user.home_state = getHomeState(user.email);
+   const hashedPassword = await toHash(req.body.password);
+   const user = {
+      id: req.body.id,
+      email: req.body.email,
+      home_state: getHomeState(req.body.email),
+      password: hashedPassword,
+      created_at: req.body.createdAt,
+   };
+
    console.log(`Here's the user just created: `, user);
-   db.query(insertUser, []).then().catch();
+
+   db.query(insertUser, user)
+      .then((dbRes) => {
+         console.log(dbRes);
+      })
+      .catch((err) => {
+         console.log(err);
+      });
    // create function to check for state (grab from email)
 });
 
 module.exports = router;
+
+// user.home_state = getHomeState(user.email);
 
 function getHomeState(email) {
    if (email.includes("nv")) {
