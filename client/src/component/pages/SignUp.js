@@ -105,15 +105,12 @@ class SignUp extends React.Component {
             .post("/api/v1/users", user)
             .then((res) => {
                console.log(res);
+               // Update current user in global state with API Response
+               // Go to next page: this.props.history.push("/questions");
             })
             .catch((err) => {
                console.log(err);
             });
-
-         // Update current user in global state with API Response
-         // Go to next page: this.props.history.push("/questions");
-
-         // Update currentUser in global state with API response
       }
    }
 
