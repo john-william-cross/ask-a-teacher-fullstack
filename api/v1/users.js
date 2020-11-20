@@ -2,6 +2,7 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../../db");
+const insertUser = require("../../queries/insertUser");
 const selectUser = require("../../queries/selectUser");
 const { toJson, toSafeParse, toHash } = require("../../utils/helpers");
 
@@ -28,15 +29,18 @@ router.get("/", (req, res) => {
 router.post("/", async (req, res) => {
    const user = req.body;
    user.password = await toHash(user.password);
-   console.log(user);
+   user.home_state = getHomeState(user.email);
+   console.log(`Here's the user just created: `, user);
+   db.query(insertUser, []).then().catch();
    // create function to check for state (grab from email)
 });
 
 module.exports = router;
 
 function getHomeState(email) {
-   let homeState = "";
    if (email.includes("nv")) {
-      homeState = "Nevada";
+      return "I miss breakfast pizza.";
+   } else {
+      return "";
    }
 }
