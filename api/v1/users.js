@@ -10,7 +10,7 @@ const { toJson, toSafeParse, toHash } = require("../../utils/helpers");
 // @access      PUBLIC
 router.post("/", async (req, res) => {
    const { id, email, password, createdAt } = req.body;
-   const emailError = getSignUpEmailError(email);
+   // const emailError = getSignUpEmailError(email);
    const user = {
       id,
       email,
@@ -34,8 +34,11 @@ module.exports = router;
 
 function getHomeState(email) {
    if (email.includes("nv")) {
-      return "Iowa.";
+      return "Nevada";
+   }
+   if (email.includes("dmschools.org")) {
+      return "Iowa";
    } else {
-      return "";
+      ("");
    }
 }

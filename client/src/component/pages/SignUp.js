@@ -24,7 +24,7 @@ class SignUp extends React.Component {
       const lowerCasedEmailInput = emailInput.toLowerCase();
       console.log(lowerCasedEmailInput);
       // eslint-disable-next-line
-      const emailRegex = /@nv.ccsd.net$/;
+      const emailRegex = /(@dmschools.org|@nv.ccsd.net)$/;
 
       if (emailInput === "")
          this.setState({
@@ -126,7 +126,7 @@ class SignUp extends React.Component {
                            Thanks for joining us!
                         </h1>
 
-                        <p className="mt-7">Enter your CCSD email</p>
+                        <p className="mt-7">Enter your school email</p>
                         <>
                            <input
                               id="signup-email-input"
