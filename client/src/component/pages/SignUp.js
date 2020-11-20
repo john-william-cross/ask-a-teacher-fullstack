@@ -6,7 +6,7 @@ import { v4 as getUuid } from "uuid";
 import axios from "axios";
 // import actions from "../../store/actions";
 import { connect } from "react-redux";
-
+import { EMAIL_REGEX } from "../../utils/helpers";
 //functions go in react classes
 class SignUp extends React.Component {
    //we can set the state in constructor
@@ -24,14 +24,13 @@ class SignUp extends React.Component {
       const lowerCasedEmailInput = emailInput.toLowerCase();
       console.log(lowerCasedEmailInput);
       // eslint-disable-next-line
-      const emailRegex = /(@dmschools.org|@nv.ccsd.net)$/;
 
       if (emailInput === "")
          this.setState({
             emailError: "Please enter your email address.",
             hasEmailError: true,
          });
-      else if (emailRegex.test(lowerCasedEmailInput) === false) {
+      else if (EMAIL_REGEX.test(lowerCasedEmailInput) === false) {
          console.log("not a valid email");
          this.setState({
             emailError: "Please enter a valid email address.",

@@ -10,6 +10,8 @@ const ANSWER_MAX_CARD_CHARS = 2000;
 
 export { checkAnswerIsOver, ANSWER_MAX_CARD_CHARS };
 
+const EMAIL_REGEX = /(@dmschools.org|@nv.ccsd.net)$/;
+
 function checkQuestionIsOver(str, num) {
    if (str.length > num) return true;
    else return false;
@@ -17,6 +19,6 @@ function checkQuestionIsOver(str, num) {
 
 const QUESTION_MAX_CARD_CHARS = 500;
 
-export { checkQuestionIsOver, QUESTION_MAX_CARD_CHARS };
+export { checkQuestionIsOver, QUESTION_MAX_CARD_CHARS, EMAIL_REGEX };
 
 //technically you could put something like setEmailState here

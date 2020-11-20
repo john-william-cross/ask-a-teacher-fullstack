@@ -19,4 +19,6 @@ module.exports = {
       const saltRounds = 12;
       return bcrypt.hash(password, saltRounds);
    },
+
+   EMAIL_REGEX: /(@dmschools.org|@nv.ccsd.net)$/,
 };
