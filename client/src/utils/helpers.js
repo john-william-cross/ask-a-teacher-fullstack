@@ -10,7 +10,7 @@ const ANSWER_MAX_CARD_CHARS = 2000;
 
 export { checkAnswerIsOver, ANSWER_MAX_CARD_CHARS };
 
-const EMAIL_REGEX = /(@dmschools.org|@nv.ccsd.net)$/;
+const EMAIL_REGEX = /@nv.ccsd.net$/;
 
 function checkQuestionIsOver(str, num) {
    if (str.length > num) return true;

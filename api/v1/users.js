@@ -12,7 +12,7 @@ const getSignUpPasswordError = require("../../validation/getSignUpPasswordError"
 // @access      PUBLIC
 router.post("/", async (req, res) => {
    const { id, email, password, createdAt } = req.body;
-   const emailError = getSignUpEmailError("");
+   const emailError = getSignUpEmailError(email);
    const passwordError = getSignUpPasswordError(password);
    if (emailError === "" && passwordError === "") {
       const user = {
@@ -43,10 +43,7 @@ module.exports = router;
 function getHomeState(email) {
    if (email.includes("nv")) {
       return "Nevada";
-   }
-   if (email.includes("dmschools.org")) {
-      return "Iowa";
    } else {
-      ("");
+      return "";
    }
 }
