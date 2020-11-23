@@ -3,6 +3,7 @@ const express = require("express");
 const router = express.Router();
 const db = require("../../db");
 const insertUser = require("../../queries/insertUser");
+const selectUserById = require("../../queries/selectUserById");
 const { toHash } = require("../../utils/helpers");
 const getSignUpEmailError = require("../../validation/getSignUpEmailError");
 const getSignUpPasswordError = require("../../validation/getSignUpPasswordError");
@@ -25,9 +26,20 @@ router.post("/", async (req, res) => {
       };
 
       db.query(insertUser, user)
-         .then((dbRes) => {
-            console.log(dbRes);
-            // return the user data so we can put in redux store
+         .then(() => {
+            db.query(selectUserById, id)
+               .then((users) => {
+                  const user = users[0];
+                  res.status(200).json({
+                     id: user.id,
+                     email: user.email,
+                     createdAt: user.created_at,
+                  });
+               })
+               .catch((err) => {
+                  console.log(err);
+                  res.status(400).json("there is an error in the database");
+               });
          })
          .catch((err) => {
             console.log(err);
