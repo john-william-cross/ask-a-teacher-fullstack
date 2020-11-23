@@ -30,12 +30,10 @@ class LogIn extends React.Component {
          email: emailInput,
          password: passwordInput,
       };
-      console.log("Created user object for POST: ", user);
       axios
          .post("/api/v1/users/auth", user)
          .then((res) => {
-            // handle success
-            console.log(res.data);
+            // update currentUser in global state with API response
             this.props.dispatch({
                type: actions.UPDATE_CURRENT_USER,
                payload: res.data,
