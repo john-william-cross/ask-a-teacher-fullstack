@@ -21,10 +21,8 @@ function checkIsInDb(email) {
    return db
       .query(selectUserByEmail, email)
       .then((users) => {
-         if (users.length === 0) {
-            console.log(`Here is the length: `, users.length);
-            return false;
-         } else return true;
+         if (users.length === 0) return false;
+         else return true;
       })
       .catch((err) => {
          console.log(err);
