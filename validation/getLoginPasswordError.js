@@ -6,24 +6,29 @@ module.exports = async function getLoginPasswordError(password, email) {
    if (password === "") {
       return "Please enter your password.";
    }
-   if (await checkIsValidUser(email, password) === false) {
+   if ((await checkIsValidUser(email, password)) === false) {
       return "The email and password combination you entered is invalid.";
    }
    return "";
 };
 
-function checkIsValidUser(email, password) { 
+function checkIsValidUser(email, password) {
    return db
       .query(selectUserByEmail, email)
-      .then((users) => {
-         console.log(`Users from DB:`, users);
-         const user = user[0];
-         bcrypt.compare(password, user.password).then((result) => {
-            console.log(result)
-            return result;
-         });
+      .then(async (users) => {
+         const user = users[0];
+         const isValidUser = await bcrypt
+            .compare(password, user.password)
+            .then((isValidUser) => {
+               console.log(isValidUser);
+               return isValidUser;
+            })
+            .catch((err) => {
+               console.log(err);
+            });
+         return isValidUser;
       })
       .catch((err) => {
-         console.log(err);
+         return false;
       });
-
+}
