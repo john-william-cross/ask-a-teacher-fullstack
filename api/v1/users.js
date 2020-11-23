@@ -61,7 +61,7 @@ router.post("/auth", async (req, res) => {
    const { email, password } = req.body;
    const emailError = getLoginEmailError(email);
    // console.log(`Here is the Email Error: `, emailError);
-   const passwordError = getLoginPasswordError(password, email);
+   const passwordError = await getLoginPasswordError(password, email);
    let dbError = "";
 });
 

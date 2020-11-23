@@ -1,9 +1,7 @@
 import React from "react";
 import Header from "../ui/Header";
 import Footer from "../ui/Footer";
-
 import classnames from "classnames";
-// import { v4 as getUuid } from "uuid";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { connect } from "react-redux";
@@ -60,42 +58,30 @@ class LogIn extends React.Component {
       const emailInput = document.getElementById("login-email-input").value;
       const passwordInput = document.getElementById("login-password-input")
          .value;
-      console.log({ emailInput, passwordInput });
-      await this.setEmailState(emailInput);
-      await this.setPasswordState(passwordInput, emailInput);
-      if (
-         this.state.hasEmailError === false &&
-         this.state.hasPasswordError === false
-      ) {
-         // const user = {
-         //    //creating that user here
-         //    id: getUuid(),
-         //    email: emailInput,
-         //    password: passwordInput,
-         //    createdAt: Date.now(),
-         // };
-         // console.log("Created user object for POST: ", user);
-         // Mimic API response:
-         axios
-            .get(
-               "https://raw.githubusercontent.com/john-william-cross/ask-a-teacher-mpa/master/src/mock-data/currentUser.json"
-            )
-            .then((res) => {
-               // handle success
-               const currentUser = res.data;
-               console.log(`currentUser: `, currentUser);
-               this.props.dispatch({
-                  type: actions.UPDATE_CURRENT_USER,
-                  payload: res.data,
-               });
-            })
-            .catch((error) => {
-               // handle error
-               console.log(error);
+
+      const user = {
+         //creating that user here
+         email: emailInput,
+         password: passwordInput,
+      };
+      console.log("Created user object for POST: ", user);
+      axios
+         .post("/api/v1/users/auth", user)
+         .then((res) => {
+            // handle success
+            const currentUser = res.data;
+            console.log(`currentUser: `, currentUser);
+            this.props.dispatch({
+               type: actions.UPDATE_CURRENT_USER,
+               payload: res.data,
             });
-         //redirect the user
-         this.props.history.push("/questions");
-      }
+         })
+         .catch((error) => {
+            // handle error
+            console.log(error);
+         });
+      //redirect the user
+      this.props.history.push("/questions");
    }
 
    render() {
