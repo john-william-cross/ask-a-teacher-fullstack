@@ -20,5 +20,5 @@ module.exports = {
       return bcrypt.hash(password, saltRounds);
    },
 
-   EMAIL_REGEX: /@nv.ccsd.net$/,
+   EMAIL_REGEX: /@nv.ccsd.net$/i,
 };
