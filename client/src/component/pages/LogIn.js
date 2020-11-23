@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { connect } from "react-redux";
 import actions from "../../store/actions";
-import { EMAIL_REGEX } from "../../utils/helpers";
 
 class LogIn extends React.Component {
    //we can set the state in constructor
@@ -19,39 +18,6 @@ class LogIn extends React.Component {
          hasEmailError: false,
          hasPasswordError: false,
       };
-   }
-
-   async setEmailState(emailInput) {
-      const lowerCasedEmailInput = emailInput.toLowerCase();
-      console.log(lowerCasedEmailInput);
-
-      if (emailInput === "")
-         this.setState({
-            emailError: "Please enter your email address.",
-            hasEmailError: true,
-         });
-      else if (EMAIL_REGEX.test(lowerCasedEmailInput) === false) {
-         console.log("not a valid email");
-         this.setState({
-            emailError: "Please enter a valid email address.",
-            hasEmailError: true,
-         });
-      } else {
-         this.setState({ emailError: "", hasEmailError: false });
-      }
-   }
-
-   async setPasswordState(passwordInput) {
-      console.log(passwordInput);
-
-      if (passwordInput === "") {
-         this.setState({
-            passwordError: "Please enter your password.",
-            hasPasswordError: true,
-         });
-      } else {
-         this.setState({ passwordError: "", hasPasswordError: false });
-      }
    }
 
    async validateAndLogInUser() {
