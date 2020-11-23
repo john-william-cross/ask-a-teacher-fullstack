@@ -8,7 +8,7 @@ module.exports = async function getSignUpEmailError(email) {
    if (email === "") {
       return "Please enter your email address.";
    }
-   if (EMAIL_REGEX.test(email.toLowerCase()) === false) {
+   if (EMAIL_REGEX.test(email) === false) {
       return "Please enter a valid email address";
    }
    if (isInDB) {
@@ -23,7 +23,7 @@ function checkIsInDb(email) {
       .then((users) => {
          // console.log(`Users from DB:`, users);
          if (users.length === 0) {
-            console.log(`Here is the lenght: `, users.length);
+            console.log(`Here is the length: `, users.length);
             return false;
          } else return true;
       })
