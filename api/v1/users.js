@@ -58,10 +58,10 @@ router.post("/", async (req, res) => {
 // @access      PUBLIC
 
 router.post("/auth", async (req, res) => {
-   const { id, email, password, createdAt } = req.body;
-   const emailError = await getSignUpEmailError(email);
-   console.log(`Here is the Email Error: `, emailError);
-   const passwordError = getSignUpPasswordError(password, email);
+   const { email, password } = req.body;
+   const emailError = getLoginEmailError(email);
+   // console.log(`Here is the Email Error: `, emailError);
+   const passwordError = getLoginPasswordError(password, email);
    let dbError = "";
 });
 
