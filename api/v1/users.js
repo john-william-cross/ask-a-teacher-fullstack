@@ -4,6 +4,7 @@ const router = express.Router();
 const db = require("../../db");
 const insertUser = require("../../queries/insertUser");
 const selectUserById = require("../../queries/selectUserById");
+const selectUserByEmail = require("../../queries/selectUserByEmail");
 const { toHash } = require("../../utils/helpers");
 const getSignUpEmailError = require("../../validation/getSignUpEmailError");
 const getSignUpPasswordError = require("../../validation/getSignUpPasswordError");
@@ -61,7 +62,6 @@ router.post("/", async (req, res) => {
 router.post("/auth", async (req, res) => {
    const { email, password } = req.body;
    const emailError = getLoginEmailError(email);
-   // console.log(`Here is the Email Error: `, emailError);
    const passwordError = await getLoginPasswordError(password, email);
    let dbError = "";
    if (emailError === "" && passwordError === "") {
