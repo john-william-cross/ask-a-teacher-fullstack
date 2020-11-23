@@ -53,6 +53,18 @@ router.post("/", async (req, res) => {
    }
 });
 
+// @route       POST api/v1/users/auth
+// @desc        check this user against the db via email and password
+// @access      PUBLIC
+
+router.post("/auth", async (req, res) => {
+   const { id, email, password, createdAt } = req.body;
+   const emailError = await getSignUpEmailError(email);
+   console.log(`Here is the Email Error: `, emailError);
+   const passwordError = getSignUpPasswordError(password, email);
+   let dbError = "";
+});
+
 module.exports = router;
 
 function getHomeState(email) {
