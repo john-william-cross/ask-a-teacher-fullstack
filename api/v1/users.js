@@ -14,7 +14,7 @@ router.post("/", async (req, res) => {
    const { id, email, password, createdAt } = req.body;
    const emailError = await getSignUpEmailError(email);
    console.log(`Here is the Email Error: `, emailError);
-   const passwordError = getSignUpPasswordError(password);
+   const passwordError = getSignUpPasswordError(password, email);
    if (emailError === "" && passwordError === "") {
       const user = {
          id,
