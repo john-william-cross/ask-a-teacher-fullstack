@@ -18,14 +18,6 @@ router.get("/", (req, res) => {
    db.query(selectQuestions, [order])
       .then((questions) => {
          const questionsAndAnswers = toSafeParse(toJson(questions));
-         // 24 minutes into 345A... let constructedSearchTerm, if (searchTerm === '') {constructedSearchTerm...} ... ask when we handle searches?
-
-         // console.log(`HERE ARE THE AndAnswers: `, questions);
-
-         // const questionData = questions.map((questionKey) => {
-         //    return questionKey.question_text;
-         // });
-         // console.log(questionData);
 
          const camelCasedQuestionsAndAnswers = questionsAndAnswers.map(
             (question) => {
