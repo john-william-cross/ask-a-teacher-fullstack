@@ -26,7 +26,7 @@ router.post("/", async (req, res) => {
          password: await toHash(password),
          created_at: createdAt,
       };
-
+      //comment for commit
       db.query(insertUser, user)
          .then(() => {
             db.query(selectUserById, id)
