@@ -41,13 +41,24 @@ class LogIn extends React.Component {
                type: actions.UPDATE_CURRENT_USER,
                payload: res.data,
             });
+            //redirect the user
+            // this.props.history.push("/questions");
          })
-         .catch((error) => {
-            // handle error
-            console.log(error);
+         .catch((err) => {
+            const { data } = err.response;
+            console.log(data);
+            const { emailError, passwordError } = data;
+            if (emailError !== "") {
+               this.setState({ hasEmailError: true, emailError });
+            } else {
+               this.setState({ hasEmailError: false, emailError });
+            }
+            if (passwordError !== "") {
+               this.setState({ hasPasswordError: true, passwordError });
+            } else {
+               this.setState({ hasPasswordError: false, passwordError });
+            }
          });
-      //redirect the user
-      this.props.history.push("/questions");
    }
 
    render() {

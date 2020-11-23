@@ -20,7 +20,6 @@ function checkIsValidUser(email, password) {
          const isValidUser = await bcrypt
             .compare(password, user.password)
             .then((isValidUser) => {
-               console.log(isValidUser);
                return isValidUser;
             })
             .catch((err) => {
