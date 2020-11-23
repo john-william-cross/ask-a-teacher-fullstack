@@ -16,6 +16,7 @@ router.post("/", async (req, res) => {
    const emailError = await getSignUpEmailError(email);
    console.log(`Here is the Email Error: `, emailError);
    const passwordError = getSignUpPasswordError(password, email);
+   let dbError = "";
    if (emailError === "" && passwordError === "") {
       const user = {
          id,
@@ -38,13 +39,14 @@ router.post("/", async (req, res) => {
                })
                .catch((err) => {
                   console.log(err);
-                  res.status(400).json("there is an error in the database");
+                  dbError = `${err.code} ${err.sqlMessage}`;
+                  res.status(400).json({ dbError });
                });
          })
          .catch((err) => {
             console.log(err);
-            // return a 400 error to user
-            res.status(400).json({ emailError, passwordError });
+            dbError = `${err.code} ${err.sqlMessage}`;
+            res.status(400).json({ dbError });
          });
    } else {
       res.status(400).json({ emailError, passwordError });
