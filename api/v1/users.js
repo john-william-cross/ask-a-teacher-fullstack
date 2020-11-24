@@ -75,7 +75,7 @@ router.post("/auth", async (req, res) => {
                email: users[0].email,
                createdAt: users[0].createdAt,
             };
-            jwt.sign(user, secret, { expiresIn: "1m" });
+            const accessToken = jwt.sign(user, secret, { expiresIn: "1m" });
 
             res.status(200).json(user);
          })
