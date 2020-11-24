@@ -7,7 +7,7 @@ module.exports = function validateJwt(req, res, next) {
    if (!accessToken) {
       return res.status(401).json({ authError: "No token provided" });
    }
-
+   //comment for commit
    try {
       // verify the token,
 
