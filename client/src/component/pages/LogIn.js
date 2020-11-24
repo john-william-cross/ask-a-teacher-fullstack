@@ -35,7 +35,9 @@ class LogIn extends React.Component {
          .post("/api/v1/users/auth", user)
          .then((res) => {
             // set token in localstorage
-            const user = jwtDecode(res.data);
+            const authToken = res.data;
+            localStorage.setItem("authToken", authToken);
+            const user = jwtDecode(authToken);
             this.props.dispatch({
                type: actions.UPDATE_CURRENT_USER,
                payload: user,
