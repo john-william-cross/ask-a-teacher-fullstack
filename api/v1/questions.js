@@ -5,12 +5,13 @@ const db = require("../../db");
 const selectQuestions = require("../../queries/selectQuestions");
 const { toJson, toSafeParse } = require("../../utils/helpers");
 const uniqBy = require("lodash/uniqBy");
+const validateJwt = require("../../utils/validateJwt");
 
 // @route       GET api/v1/questions
 //@desc         Get all the questions by desc order
-//@access       PUBLIC
+//@access       private
 
-router.get("/", (req, res) => {
+router.get("/", validateJwt, (req, res) => {
    // console.log(req.query);
    const { order } = req.query;
 
