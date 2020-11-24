@@ -8,7 +8,6 @@ import SignUp from "./component/pages/SignUp";
 import LogIn from "./component/pages/LogIn";
 import SubmitQuestion from "./component/pages/SubmitQuestion";
 import NotFound from "./component/pages/NotFound";
-import jwtDecode from "jwt-decode";
 
 const authToken = localStorage.authToken;
 if (authToken) {
