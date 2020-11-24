@@ -70,6 +70,8 @@ router.post("/auth", async (req, res) => {
    if (emailError === "" && passwordError === "") {
       // return the user to the client
       db.query(selectUserByEmail, email)
+         // TODO: repeat when creating a user
+
          .then((users) => {
             const user = {
                id: users[0].id,
