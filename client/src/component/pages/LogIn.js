@@ -42,6 +42,7 @@ class LogIn extends React.Component {
                type: actions.UPDATE_CURRENT_USER,
                payload: user,
             });
+            axios.defaults.headers.common["x-auth-token"] = authToken;
             this.props.history.push("/questions");
          })
          .catch((err) => {
