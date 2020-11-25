@@ -14,11 +14,11 @@ const validateJwt = require("../../utils/validateJwt");
 router.get("/", validateJwt, (req, res) => {
    // console.log(req.query);
    const { order } = req.query;
-   const userId = req.user.id;
+   // const userId = req.user.id;
    // 28 minutes into 360, ask question about if I need this...
 
    /* https://www.npmjs.com/package/mysql#escaping-query-values */
-   db.query(selectQuestions, [userId, order])
+   db.query(selectQuestions, [order])
       .then((questions) => {
          const questionsAndAnswers = toSafeParse(toJson(questions));
 
