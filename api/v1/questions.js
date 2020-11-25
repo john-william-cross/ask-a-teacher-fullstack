@@ -18,7 +18,7 @@ router.get("/", validateJwt, (req, res) => {
    // 28 minutes into 360, ask question about if I need this...
 
    /* https://www.npmjs.com/package/mysql#escaping-query-values */
-   db.query(selectQuestions, [order])
+   db.query(selectQuestions, [userId, order])
       .then((questions) => {
          const questionsAndAnswers = toSafeParse(toJson(questions));
 
