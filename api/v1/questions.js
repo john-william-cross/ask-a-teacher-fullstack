@@ -11,6 +11,7 @@ const validateJwt = require("../../utils/validateJwt");
 //@desc         Get all the questions by desc order
 //@access       private
 
+//should I remove validateJwt here?
 router.get("/", validateJwt, (req, res) => {
    // console.log(req.query);
    const { order } = req.query;
