@@ -9,11 +9,15 @@ import Answer from "../ui/Answer";
 import { connect } from "react-redux";
 import isEmpty from "lodash/isEmpty";
 import actions from "../../store/actions";
+import { v4 as getUuid } from "uuid";
+import currentUser from "../../store/reducers/currentUser";
+import axios from "axios";
 
 class Question extends React.Component {
    constructor(props) {
       super(props);
       this.state = { answerInput: "" };
+      // this.state = { currentUser: currentUser.id };
    }
 
    //don't need API; data is coming form the global state
@@ -29,6 +33,36 @@ class Question extends React.Component {
 
    setAnswerInput(e) {
       this.setState({ answerInput: e.target.value });
+   }
+
+   setCreatableAnswer() {
+      console.log("UPDATE CREATABLE ANSWER");
+      const user = {
+         id: getUuid(),
+         text: this.state.answerInput,
+         answeredAt: Date.now(),
+         userId: this.props.currentUser.id,
+         questionId: this.props.answerableQuestion.id,
+      };
+
+      // axios request send this user object to the server
+      axios
+         .post("/api/v1/answers", user)
+         .then((res) => {
+            console.log("here is the user: ", res.data);
+            // this.props.dispatch({
+            //    type: actions.UPDATE_CREATABLE_ANSWER,
+            //    payload: res.data,
+            // });
+            // this.props.history.push("/questions");
+         })
+         .catch((err) => {
+            const { data } = err.response;
+            console.log(data);
+         });
+      // console log the user on the server
+      // db.query to insert into the database
+      // send back all questions and answers and update redux store
    }
 
    render() {
@@ -109,10 +143,13 @@ class Question extends React.Component {
                               <button
                                  className={classnames(
                                     "mt-5 submit-answer-button logo-text-font btn btn-xm btn-outline-primary",
-                                    { disabled: this.checkAnswerIsOver() }
+                                    {
+                                       disabled: this.checkAnswerIsOver(),
+                                    }
                                  )}
-                                 type="submit"
-                                 value="Submit answer"
+                                 onClick={() => {
+                                    this.setCreatableAnswer();
+                                 }}
                               >
                                  Submit answer
                                  {/* on click,  */}
@@ -144,6 +181,8 @@ class Question extends React.Component {
 function mapStateToProps(state) {
    return {
       answerableQuestion: state.answerableQuestion,
+      creatableAnswer: state.creatableAnswer,
+      currentUser: state.currentUser,
    };
 }
 
