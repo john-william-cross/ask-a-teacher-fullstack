@@ -50,11 +50,11 @@ class Question extends React.Component {
          .post("/api/v1/answers", user)
          .then((res) => {
             console.log("here is the user: ", res.data);
-            // this.props.dispatch({
-            //    type: actions.UPDATE_CREATABLE_ANSWER,
-            //    payload: res.data,
-            // });
-            // this.props.history.push("/questions");
+            this.props.dispatch({
+               type: actions.UPDATE_CREATABLE_ANSWER,
+               payload: res.data,
+            });
+            this.props.history.push("/questions");
          })
          .catch((err) => {
             const { data } = err.response;
