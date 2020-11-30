@@ -1,7 +1,6 @@
 import React from "react";
 import Header from "../ui/Header";
 import Footer from "../ui/Footer";
-
 import { Link } from "react-router-dom";
 import toDisplayDate from "date-fns/format";
 import { checkAnswerIsOver, ANSWER_MAX_CARD_CHARS } from "../../utils/helpers";
@@ -9,6 +8,7 @@ import classnames from "classnames";
 import Answer from "../ui/Answer";
 import { connect } from "react-redux";
 import isEmpty from "lodash/isEmpty";
+import actions from "../../store/actions";
 
 class Question extends React.Component {
    constructor(props) {

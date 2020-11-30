@@ -12,7 +12,7 @@ const validateJwt = require("../../utils/validateJwt");
 //@access       private
 
 //should I remove validateJwt here?
-router.get("/", validateJwt, (req, res) => {
+router.get("/", (req, res) => {
    // console.log(req.query);
    const { order } = req.query;
    // const userId = req.user.id;

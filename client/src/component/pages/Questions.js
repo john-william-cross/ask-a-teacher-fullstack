@@ -19,6 +19,7 @@ class Questions extends React.Component {
          allQuestions: [],
       };
    }
+
    componentDidMount() {
       axios
          .get(`/api/v1/questions?order=${this.state.order}`)
@@ -130,6 +131,7 @@ function mapStateToProps(state) {
    //return whatever we want to pass from the global state into the properties
    return {
       allQuestions: state.allQuestions,
+      currentUser: state.currentUser,
    };
 }
 

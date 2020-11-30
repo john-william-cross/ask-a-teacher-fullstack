@@ -25,6 +25,10 @@ function QuestionPreview(props) {
 
       // store the object inside the redux store /////use props.dispatch; won't need this.props.dispatch
    }
+   // function viewUser() {
+   //    const currentUser = props.currentUser;
+   //    console.log("here's the current user: ", currentUser);
+   // }
 
    return (
       <>
@@ -45,7 +49,9 @@ function QuestionPreview(props) {
          </p>
          <p className="text-muted asked-on-answers-num float-right">
             {props.question.answers.length} answers
+            {/* {viewUser()} */}
          </p>
+
          <div className="clearfix"></div>
 
          <hr className="mt-5" />
@@ -60,6 +66,7 @@ function mapStateToProps(state) {
    return {
       answerableQuestion: state.answerableQuestion,
       allQuestions: state.allQuestions,
+      currentUser: state.currentUser,
    };
 }
 export default connect(mapStateToProps)(QuestionPreview);
