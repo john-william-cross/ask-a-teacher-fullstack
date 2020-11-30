@@ -6,6 +6,7 @@ const initialState = {
    currentUser: {},
    allQuestions: [],
    answerableQuestion: {},
+   creatableAnswer: {},
 };
 
 const store = createStore(combineReducers, initialState, composeWithDevTools());
