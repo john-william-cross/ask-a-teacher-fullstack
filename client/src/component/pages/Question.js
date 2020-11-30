@@ -37,29 +37,20 @@ class Question extends React.Component {
 
    setCreatableAnswer() {
       console.log("UPDATE CREATABLE ANSWER");
-      const user = {
+      const answer = {
          id: getUuid(),
          text: this.state.answerInput,
          answeredAt: Date.now(),
          userId: this.props.currentUser.id,
          questionId: this.props.answerableQuestion.id,
       };
+      console.log("here is the answer: ", answer);
 
       // axios request send this user object to the server
       axios
-         .post("/api/v1/answers", user)
-         .then((res) => {
-            console.log("here is the user: ", res.data);
-            this.props.dispatch({
-               type: actions.UPDATE_CREATABLE_ANSWER,
-               payload: res.data,
-            });
-            this.props.history.push("/questions");
-         })
-         .catch((err) => {
-            const { data } = err.response;
-            console.log(data);
-         });
+         .post("/api/v1/answers", answer)
+         .then(() => {})
+         .catch(() => {});
       // console log the user on the server
       // db.query to insert into the database
       // send back all questions and answers and update redux store

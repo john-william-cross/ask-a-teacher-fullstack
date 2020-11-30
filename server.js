@@ -6,7 +6,7 @@ app.use(express.json());
 
 app.use("/api/v1/users", require("./api/v1/users"));
 app.use("/api/v1/questions", require("./api/v1/questions"));
-app.use("api/v1/answers", require("./api/v1/answers"));
+// app.use("api/v1/answers", require("./api/v1/answers"));
 // eventually a route for posting a question
 
 app.use(express.static("client/build"));
