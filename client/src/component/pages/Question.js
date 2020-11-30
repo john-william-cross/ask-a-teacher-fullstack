@@ -44,6 +44,7 @@ class Question extends React.Component {
          userId: this.props.currentUser.id,
          questionId: this.props.answerableQuestion.id,
       };
+      this.props.history.push("/questions");
       console.log("here is the answer: ", answer);
 
       // axios request send this user object to the server
