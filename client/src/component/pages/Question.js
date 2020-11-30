@@ -17,7 +17,6 @@ class Question extends React.Component {
    constructor(props) {
       super(props);
       this.state = { answerInput: "" };
-      // this.state = { currentUser: currentUser.id };
    }
 
    //don't need API; data is coming form the global state
@@ -50,9 +49,11 @@ class Question extends React.Component {
       // axios request send this user object to the server
       axios
          .post("/api/v1/answers", answer)
-         .then(() => {})
-         .catch(() => {});
-      // console log the user on the server
+         .then((res) => {
+            console.log(answer);
+         })
+         .catch((err) => {});
+      // console log an answer on the server
       // db.query to insert into the database
       // send back all questions and answers and update redux store
    }
