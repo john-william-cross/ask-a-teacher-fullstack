@@ -106,20 +106,18 @@ class Question extends React.Component {
                                  </span>
                               </p>
 
-                              <Link
-                                 to={this.props.answerableQuestion.prevRoute}
+                              <button
                                  className={classnames(
                                     "mt-5 submit-answer-button logo-text-font btn btn-xm btn-outline-primary",
                                     { disabled: this.checkAnswerIsOver() }
                                  )}
-                                 id="submit-answer"
                                  type="submit"
                                  value="Submit answer"
                               >
                                  Submit answer
                                  {/* on click,  */}
                                  {/* TODO: ADD TAKE ME BACK/CANCEL BUTTON */}
-                              </Link>
+                              </button>
                               <Link
                                  to={this.props.answerableQuestion.prevRoute}
                                  className={classnames(
