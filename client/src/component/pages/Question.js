@@ -35,7 +35,7 @@ class Question extends React.Component {
    }
 
    setCreatableAnswer() {
-      console.log("UPDATE CREATABLE ANSWER");
+      console.log("you clicked on `submit answer`");
       const answer = {
          id: getUuid(),
          text: this.state.answerInput,
@@ -43,8 +43,8 @@ class Question extends React.Component {
          userId: this.props.currentUser.id,
          questionId: this.props.answerableQuestion.id,
       };
-      this.props.history.push("/questions");
-      console.log("here is the answer: ", answer);
+      // this.props.history.push("/questions");
+      console.log("here is the answer object: ", answer);
 
       // axios request send this user object to the server
       axios
