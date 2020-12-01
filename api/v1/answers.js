@@ -6,7 +6,7 @@ const router = express.Router();
 // @access Public
 
 router.post("/", (req, res) => {
-   console.log(req.body);
+   console.log("here's the body: ", req.body);
 });
 
 module.exports = router;

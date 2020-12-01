@@ -50,7 +50,7 @@ class Question extends React.Component {
       axios
          .post("/api/v1/answers", answer)
          .then((res) => {
-            console.log(answer);
+            console.log("here's the res: ", res);
          })
          .catch((err) => {});
       // console log an answer on the server
