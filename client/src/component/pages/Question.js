@@ -19,7 +19,7 @@ class Question extends React.Component {
       this.state = { answerInput: "" };
    }
 
-   //don't need API; data is coming form the global state
+   //don't need API; data is coming from the global state
 
    checkAnswerIsOver() {
       if (
