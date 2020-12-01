@@ -34,7 +34,7 @@ class Question extends React.Component {
       this.setState({ answerInput: e.target.value });
    }
 
-   setCreatableAnswer() {
+   submitAnswer() {
       console.log("you clicked on `submit answer`");
       const answer = {
          id: getUuid(),
@@ -150,7 +150,7 @@ class Question extends React.Component {
                                     }
                                  )}
                                  onClick={() => {
-                                    this.setCreatableAnswer();
+                                    this.submitAnswer();
                                  }}
                               >
                                  Submit answer
