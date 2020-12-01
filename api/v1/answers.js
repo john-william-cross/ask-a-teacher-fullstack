@@ -8,9 +8,15 @@ const router = express.Router();
 // @access Public
 
 router.post("/", (req, res) => {
-   const answer = req.body;
+   const answer = {
+      id: req.body.id,
+      text: req.body.text,
+      answered_at: req.body.answeredAt,
+      user_id: req.body.userId,
+      question_id: req.body.questionId,
+   };
    console.log("here's the answer: ", answer);
-   db.query(insertAnswer, []).then().catch();
+   db.query(insertAnswer, answer).then().catch();
 });
 
 module.exports = router;
