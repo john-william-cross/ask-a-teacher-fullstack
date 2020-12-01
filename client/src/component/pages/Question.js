@@ -69,6 +69,15 @@ class Question extends React.Component {
                      <div className="row no-gutters">
                         <div className="col-md-10 offset-md-1 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2 mt-9">
                            <div className="col-12">
+                              <div className="mb-4 mt-n1">
+                                 <Link
+                                    to={this.props.answerableQuestion.prevRoute}
+                                    className={classnames("text-muted cancel")}
+                                 >
+                                    Back to questions
+                                 </Link>
+                              </div>
+
                               <div className="lead mb-2">
                                  <Link to="question">
                                     {this.props.answerableQuestion.text}
