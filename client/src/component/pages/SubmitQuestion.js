@@ -69,7 +69,7 @@ class SubmitQuestion extends React.Component {
       const submittedQuestion = {
          id: getUuid(),
          text: this.state.questionInput,
-         email: this.state.email,
+         email: this.state.emailInput,
          createdAt: Date.now(),
       };
       this.props.history.push("/");
