@@ -43,7 +43,7 @@ class Question extends React.Component {
          userId: this.props.currentUser.id,
          questionId: this.props.answerableQuestion.id,
       };
-      // this.props.history.push("/questions");
+      this.props.history.push("/questions");
       console.log("here is the answer object: ", answer);
 
       // axios request send this user object to the server
@@ -114,7 +114,7 @@ class Question extends React.Component {
                               <textarea
                                  className="form-control form-control-lg"
                                  id="answer-input"
-                                 rows="10"
+                                 rows="8"
                                  defaultValue=""
                                  onChange={(e) => this.setAnswerInput(e)}
                               ></textarea>
@@ -180,3 +180,4 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(Question);
+//
