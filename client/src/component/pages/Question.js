@@ -8,9 +8,7 @@ import classnames from "classnames";
 import Answer from "../ui/Answer";
 import { connect } from "react-redux";
 import isEmpty from "lodash/isEmpty";
-import actions from "../../store/actions";
 import { v4 as getUuid } from "uuid";
-import currentUser from "../../store/reducers/currentUser";
 import axios from "axios";
 
 class Question extends React.Component {

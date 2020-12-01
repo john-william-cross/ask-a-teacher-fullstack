@@ -1,13 +1,13 @@
 import React from "react";
 import Header from "../ui/Header";
 import Footer from "../ui/Footer";
+import { connect } from "react-redux";
 
 import {
    checkQuestionIsOver,
    QUESTION_MAX_CARD_CHARS,
 } from "../../utils/helpers";
 import classnames from "classnames";
-import { withRouter } from "react-router-dom";
 
 class SubmitQuestion extends React.Component {
    //we can set the state in constructor
@@ -20,9 +20,6 @@ class SubmitQuestion extends React.Component {
          questionInput: "",
       };
    }
-   setQuestionInput(e) {
-      this.setState({ questionInput: e.target.value });
-   }
 
    checkQuestionIsOver() {
       if (
@@ -31,6 +28,9 @@ class SubmitQuestion extends React.Component {
       ) {
          return true;
       } else return false;
+   }
+   setQuestionInput(e) {
+      console.log(this.setState({ questionInput: e.target.value }));
    }
 
    setEmailState() {
@@ -69,7 +69,7 @@ class SubmitQuestion extends React.Component {
                      <textarea
                         className="form-control form-control-lg mt-5"
                         id="question-input"
-                        rows="10"
+                        rows="8"
                         autoFocus
                         onChange={(e) => this.setQuestionInput(e)}
                         style={{ width: "100%" }}
@@ -121,6 +121,7 @@ class SubmitQuestion extends React.Component {
                            value="Ask a teacher"
                            onClick={() => {
                               this.setEmailState();
+                              this.props.history.push("/");
                            }}
                         >
                            Ask a Teacher
@@ -134,4 +135,8 @@ class SubmitQuestion extends React.Component {
       );
    }
 }
-export default withRouter(SubmitQuestion);
+
+function mapStateToProps(state) {
+   return {};
+}
+export default connect(mapStateToProps)(SubmitQuestion);
