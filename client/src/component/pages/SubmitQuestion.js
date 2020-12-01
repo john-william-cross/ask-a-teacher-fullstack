@@ -151,7 +151,6 @@ class SubmitQuestion extends React.Component {
                            onClick={() => {
                               this.setEmailState();
                               this.submitQuestion();
-                              // this.props.history.push("/");
                            }}
                         >
                            Ask a Teacher
