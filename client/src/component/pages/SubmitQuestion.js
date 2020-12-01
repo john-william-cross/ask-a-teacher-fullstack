@@ -2,6 +2,8 @@ import React from "react";
 import Header from "../ui/Header";
 import Footer from "../ui/Footer";
 import { connect } from "react-redux";
+import { v4 as getUuid } from "uuid";
+import axios from "axios";
 
 import {
    checkQuestionIsOver,
@@ -18,6 +20,7 @@ class SubmitQuestion extends React.Component {
          passwordError: "",
          hasEmailError: false,
          questionInput: "",
+         emailInput: "",
       };
    }
 
@@ -31,6 +34,9 @@ class SubmitQuestion extends React.Component {
    }
    setQuestionInput(e) {
       console.log(this.setState({ questionInput: e.target.value }));
+   }
+   setEmailInput(e) {
+      console.log(this.setState({ emailInput: e.target.value }));
    }
 
    setEmailState() {
@@ -56,6 +62,28 @@ class SubmitQuestion extends React.Component {
       } else {
          this.setState({ emailError: "", hasEmailError: false });
       }
+   }
+
+   submitQuestion() {
+      console.log("you clicked on `submit question`");
+      const submittedQuestion = {
+         id: getUuid(),
+         text: this.state.questionInput,
+         email: this.state.email,
+         createdAt: Date.now(),
+      };
+      this.props.history.push("/");
+      console.log("here is the question object: ", submittedQuestion);
+
+      // axios request send this question object to the server
+      axios
+         .post("/api/v1/submitted-questions", submittedQuestion)
+         .then((res) => {
+            console.log("here's the res: ", res);
+         })
+         .catch((err) => {});
+      // console log a question on the server
+      // db.query to insert into the database
    }
 
    render() {
@@ -98,6 +126,7 @@ class SubmitQuestion extends React.Component {
                            "is-invalid": this.state.emailError,
                         })}
                         type="email"
+                        onChange={(e) => this.setEmailInput(e)}
                      />
                      {this.state.hasEmailError && (
                         <p className="text-danger">{this.state.emailError}</p>
@@ -121,7 +150,8 @@ class SubmitQuestion extends React.Component {
                            value="Ask a teacher"
                            onClick={() => {
                               this.setEmailState();
-                              this.props.history.push("/");
+                              this.submitQuestion();
+                              // this.props.history.push("/");
                            }}
                         >
                            Ask a Teacher
