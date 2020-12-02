@@ -10,6 +10,7 @@ import { connect } from "react-redux";
 import isEmpty from "lodash/isEmpty";
 import { v4 as getUuid } from "uuid";
 import axios from "axios";
+import actions from "../../store/actions";
 
 class Question extends React.Component {
    constructor(props) {
