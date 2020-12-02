@@ -9,7 +9,7 @@ export default function Answer(props) {
                {props.answer.text}
                {props.answer.text && (
                   <span className="text-muted">
-                     This question was answered by a teacher in{" "}
+                     {"\n\n"}This question was answered by a teacher in{" "}
                      {props.answer.userHomeState} on{" "}
                      {toDisplayDate(props.answer.answeredAt, "MMMM d, y")}.
                   </span>
