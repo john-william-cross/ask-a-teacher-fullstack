@@ -29,19 +29,6 @@ class Question extends React.Component {
       } else return false;
    }
 
-   // hasCurrentUser() {
-   //    // const currentUser = this.props.currentUser;
-   //    const currentUserId = {
-   //       userId: this.props.currentUser.id,
-   //    };
-   //    if (currentUserId.length > 0) {
-   //       console.log("Here is the current user ID: ", currentUserId);
-   //       return true;
-   //    } else {
-   //       console.log("No current user, no current user ID: ", currentUserId);
-   //       return false;
-   //    }
-   // }
    hasCurrentUser() {
       const currentUser = this.props.currentUser;
       if (Object.keys(currentUser).length === 0) {
