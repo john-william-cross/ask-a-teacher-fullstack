@@ -177,6 +177,18 @@ class Question extends React.Component {
                                     }
                                  )}
                               </div>
+                              {this.hasCurrentUser() === false && (
+                                 <div className="mb-4 mt-8">
+                                    <Link
+                                       to={"/"}
+                                       className={classnames(
+                                          "text-muted cancel"
+                                       )}
+                                    >
+                                       Back to Ask a Teacher
+                                    </Link>
+                                 </div>
+                              )}
                               <div className=" mb-4"></div>
                               <div className="clearfix mb-7"></div>
                               <div>
