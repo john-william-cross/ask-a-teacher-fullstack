@@ -20,6 +20,17 @@ class Questions extends React.Component {
       };
    }
 
+   hasCurrentUser() {
+      const currentUser = this.props.currentUser;
+      if (Object.keys(currentUser).length === 0) {
+         console.log("no user logged in: ", currentUser);
+         return false;
+      } else {
+         console.log("user exists: ", currentUser);
+         return true;
+      }
+   }
+
    componentDidMount() {
       axios
          .get(`/api/v1/questions?order=${this.state.order}`)
@@ -82,44 +93,53 @@ class Questions extends React.Component {
       return (
          <>
             <Header />
-            <div className="container mb-9">
-               <div className="row no-gutters">
-                  <div className="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2 mt-9">
-                     <div className="col-12 mt-6">
-                        <h1 className="float-left top-questions">
-                           Top Questions
-                        </h1>
+            {this.hasCurrentUser() === false && (
+               <div>
+                  <p className="mt-9 text-center">
+                     Sorry, you must be logged in to view this page.
+                  </p>
+               </div>
+            )}
+            {this.hasCurrentUser() === true && (
+               <div className="container mb-9">
+                  <div className="row no-gutters">
+                     <div className="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2 mt-9">
+                        <div className="col-12 mt-6">
+                           <h1 className="float-left top-questions">
+                              Top Questions
+                           </h1>
 
-                        <select
-                           value={this.state.order}
-                           className="float-right dropdown col-5 form-control pl-0 form-control-lg"
-                           onChange={(e) => this.setOrder(e)}
-                        >
-                           <option value='[["createdAt"], ["desc"]]'>
-                              Newest
-                           </option>
-                           <option value='[["totalAnswers"], ["asc"]]'>
-                              Unanswered
-                           </option>
-                        </select>
+                           <select
+                              value={this.state.order}
+                              className="float-right dropdown col-5 form-control pl-0 form-control-lg"
+                              onChange={(e) => this.setOrder(e)}
+                           >
+                              <option value='[["createdAt"], ["desc"]]'>
+                                 Newest
+                              </option>
+                              <option value='[["totalAnswers"], ["asc"]]'>
+                                 Unanswered
+                              </option>
+                           </select>
 
-                        <div className="clearfix"></div>
+                           <div className="clearfix"></div>
 
-                        {this.state.displayedQuestions &&
-                           this.state.displayedQuestions.map((question) => {
-                              return (
-                                 <QuestionPreview
-                                    question={question}
-                                    key={question.id}
-                                 />
-                              );
-                           })}
+                           {this.state.displayedQuestions &&
+                              this.state.displayedQuestions.map((question) => {
+                                 return (
+                                    <QuestionPreview
+                                       question={question}
+                                       key={question.id}
+                                    />
+                                 );
+                              })}
 
-                        <div className="clearfix mb-4"></div>
+                           <div className="clearfix mb-4"></div>
+                        </div>
                      </div>
                   </div>
                </div>
-            </div>
+            )}{" "}
             <Footer />
          </>
       );

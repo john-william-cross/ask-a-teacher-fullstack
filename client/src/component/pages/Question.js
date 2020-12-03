@@ -53,16 +53,6 @@ class Question extends React.Component {
       }
    }
 
-   /*
-const answer = {
-         id: getUuid(),
-         text: this.state.answerInput,
-         answeredAt: Date.now(),
-         userId: this.props.currentUser.id,
-         questionId: this.props.answerableQuestion.id,
-      };
-   */
-
    setAnswerInput(e) {
       this.setState({ answerInput: e.target.value });
    }
@@ -140,7 +130,18 @@ const answer = {
                                     </Link>
                                  </div>
                               )}
-
+                              {this.hasCurrentUser() === false && (
+                                 <div className="mb-4 mt-n1">
+                                    <Link
+                                       to={"/"}
+                                       className={classnames(
+                                          "text-muted cancel"
+                                       )}
+                                    >
+                                       Back to Ask a Teacher
+                                    </Link>
+                                 </div>
+                              )}
                               <div className="lead mb-2">
                                  <Link to="question">
                                     {this.props.answerableQuestion.text}
@@ -154,12 +155,10 @@ const answer = {
                                  )}
                                  .
                               </p>
-
                               <p className="text-muted asked-on-answers-num float-right">
                                  {this.props.answerableQuestion.answers.length}{" "}
                                  answers
                               </p>
-
                               <div className="clearfix mb-4"></div>
                               <hr></hr>
                               <div
@@ -178,9 +177,7 @@ const answer = {
                                     }
                                  )}
                               </div>
-
                               <div className=" mb-4"></div>
-
                               <div className="clearfix mb-7"></div>
                               <div>
                                  {this.hasCurrentUser() === true && (
