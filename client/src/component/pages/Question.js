@@ -33,6 +33,29 @@ class Question extends React.Component {
       this.setState({ answerInput: e.target.value });
    }
 
+   componentDidMount() {
+      axios
+         .get(`/api/v1/questions?order=${this.state.order}`)
+         .then((res) => {
+            // handle success
+            const questions = res.data;
+            // console.log(
+            //    `here is a flattened pool of questions and their answers`,
+            //    questions
+            // );
+
+            console.log("STORE ALL QUESTIONS", actions.STORE_ALL_QUESTIONS);
+            this.props.dispatch({
+               type: actions.STORE_ALL_QUESTIONS,
+               payload: questions,
+            }); //this loads the questions
+         })
+         .catch((error) => {
+            // handle error
+            console.log(error);
+         });
+   }
+
    submitAnswer() {
       console.log("you clicked on `submit answer`");
       const answer = {
