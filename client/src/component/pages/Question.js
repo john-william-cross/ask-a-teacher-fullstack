@@ -160,7 +160,7 @@ class Question extends React.Component {
                                  answers
                               </p>
                               <div className="clearfix mb-4"></div>
-                              <hr></hr>
+                              {/* <hr></hr> */}
                               <div
                                  className="answers"
                                  style={{ textAlign: "justify" }}
