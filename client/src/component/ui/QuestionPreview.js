@@ -7,7 +7,7 @@ import actions from "../../store/actions";
 function QuestionPreview(props) {
    function storeAnswerableQuestion(e) {
       const id = e.target.id;
-      console.log(`here's the id: `, id);
+      console.log(`here's the question id: `, id);
 
       const match = props.allQuestions.find((question) => {
          return question.id === id;

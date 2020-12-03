@@ -29,6 +29,18 @@ class Question extends React.Component {
       } else return false;
    }
 
+   hasCurrentUser() {
+      const currentUser = this.props.currentUser;
+      console.log(this.props.currentUser);
+      if (currentUser !== undefined) {
+         console.log("here is the user: ", currentUser);
+         return true;
+      } else {
+         console.log("There is no user logged in");
+         return false;
+      }
+   }
+
    setAnswerInput(e) {
       this.setState({ answerInput: e.target.value });
    }
@@ -86,6 +98,7 @@ class Question extends React.Component {
             {" "}
             <Header />
             <>
+               {this.hasCurrentUser()}
                {isEmpty(this.props.answerableQuestion) === false && (
                   <div className="container mb-9">
                      <div className="row no-gutters">
@@ -141,52 +154,55 @@ class Question extends React.Component {
                               <div className=" mb-4"></div>
 
                               <div className="clearfix mb-7"></div>
-                              <p className="lead mt-1">Your answer</p>
-                              <textarea
-                                 className="form-control form-control-lg"
-                                 id="answer-input"
-                                 rows="8"
-                                 defaultValue=""
-                                 onChange={(e) => this.setAnswerInput(e)}
-                              ></textarea>
 
-                              <p className="float-right lead mt-0 text-muted">
-                                 <span
-                                    className={classnames({
-                                       "text-danger": checkAnswerIsOver(
-                                          this.state.answerInput,
-                                          ANSWER_MAX_CARD_CHARS
-                                       ),
-                                    })}
+                              <div className="d-none">
+                                 <p className="lead mt-1">Your answer</p>
+                                 <textarea
+                                    className="form-control form-control-lg"
+                                    id="answer-input"
+                                    rows="8"
+                                    defaultValue=""
+                                    onChange={(e) => this.setAnswerInput(e)}
+                                 ></textarea>
+
+                                 <p className="float-right lead mt-0 text-muted">
+                                    <span
+                                       className={classnames({
+                                          "text-danger": checkAnswerIsOver(
+                                             this.state.answerInput,
+                                             ANSWER_MAX_CARD_CHARS
+                                          ),
+                                       })}
+                                    >
+                                       {this.state.answerInput.length}/
+                                       {ANSWER_MAX_CARD_CHARS}
+                                    </span>
+                                 </p>
+
+                                 <button
+                                    className={classnames(
+                                       "mt-5 submit-answer-button logo-text-font btn btn-xm btn-outline-primary",
+                                       {
+                                          disabled: this.checkAnswerIsOver(),
+                                       }
+                                    )}
+                                    onClick={() => {
+                                       this.submitAnswer();
+                                    }}
                                  >
-                                    {this.state.answerInput.length}/
-                                    {ANSWER_MAX_CARD_CHARS}
-                                 </span>
-                              </p>
-
-                              <button
-                                 className={classnames(
-                                    "mt-5 submit-answer-button logo-text-font btn btn-xm btn-outline-primary",
-                                    {
-                                       disabled: this.checkAnswerIsOver(),
-                                    }
-                                 )}
-                                 onClick={() => {
-                                    this.submitAnswer();
-                                 }}
-                              >
-                                 Submit answer
-                                 {/* on click,  */}
-                                 {/* TODO: ADD TAKE ME BACK/CANCEL BUTTON */}
-                              </button>
-                              <Link
-                                 to={this.props.answerableQuestion.prevRoute}
-                                 className={classnames(
-                                    "text-muted cancel float-right"
-                                 )}
-                              >
-                                 Cancel submission
-                              </Link>
+                                    Submit answer
+                                    {/* on click,  */}
+                                    {/* TODO: ADD TAKE ME BACK/CANCEL BUTTON */}
+                                 </button>
+                                 <Link
+                                    to={this.props.answerableQuestion.prevRoute}
+                                    className={classnames(
+                                       "text-muted cancel float-right"
+                                    )}
+                                 >
+                                    Cancel submission
+                                 </Link>
+                              </div>
                            </div>
                         </div>
                      </div>
