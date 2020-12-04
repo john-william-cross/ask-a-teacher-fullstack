@@ -118,7 +118,7 @@ class Questions extends React.Component {
                                  Newest
                               </option>
                               <option value='[["totalAnswers"], ["asc"]]'>
-                                 Least Answered
+                                 Unanswered
                               </option>
                            </select>
 
