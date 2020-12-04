@@ -15,10 +15,12 @@ class Questions extends React.Component {
       super(props);
 
       this.state = {
-         // order: `[["createdAt"], ["desc"]]`,
+         order: `[["createdAt"], ["desc"]]`,
          displayedQuestions: [],
          allQuestions: [],
       };
+
+      console.log("THIS.STATE.ORDER: ", this.state.order);
    }
 
    hasCurrentUser() {
