@@ -6,6 +6,7 @@ import QuestionPreview from "../ui/QuestionPreview";
 import axios from "axios";
 import { connect } from "react-redux";
 import actions from "../../store/actions";
+import { Link } from "react-router-dom";
 
 // import allQuestions from "../../store/reducers/allQuestions";
 
@@ -94,11 +95,18 @@ class Questions extends React.Component {
          <>
             <Header />
             {this.hasCurrentUser() === false && (
-               <div>
-                  <p className="mt-9 text-center">
-                     Sorry, you must be logged in to view this page.
-                  </p>
-               </div>
+               <>
+                  {" "}
+                  <div>
+                     <p className="mt-9 text-center">
+                        Sorry, you must be logged in as a teacher to view this
+                        page.
+                     </p>
+                  </div>
+                  <div className="text-center text-muted mt-4">
+                     <Link to={"/"}>Take me back to Ask a Teacher</Link>
+                  </div>
+               </>
             )}
             {this.hasCurrentUser() === true && (
                <div className="container mb-9">
