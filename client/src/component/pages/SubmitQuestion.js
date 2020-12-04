@@ -97,7 +97,7 @@ class SubmitQuestion extends React.Component {
                      <textarea
                         className="form-control form-control-lg mt-5"
                         id="question-input"
-                        rows="8"
+                        rows="5"
                         autoFocus
                         onChange={(e) => this.setQuestionInput(e)}
                         style={{ width: "100%" }}
