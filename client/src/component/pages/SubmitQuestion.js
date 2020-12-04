@@ -149,6 +149,7 @@ class SubmitQuestion extends React.Component {
                            type="submit"
                            value="Ask a teacher"
                            onClick={() => {
+                              alert("Your question has been submitted!");
                               this.setEmailState();
                               this.submitQuestion();
                            }}
