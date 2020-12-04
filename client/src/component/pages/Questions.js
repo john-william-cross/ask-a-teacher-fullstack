@@ -14,7 +14,7 @@ class Questions extends React.Component {
       super(props);
 
       this.state = {
-         order: `[["createdAt"], ["desc"]]`,
+         // order: `[["createdAt"], ["desc"]]`,
          displayedQuestions: [],
          allQuestions: [],
       };
@@ -64,7 +64,7 @@ class Questions extends React.Component {
             ),
             allQuestions: this.props.allQuestions.map((question) => {
                return {
-                  // totalAnswers: question.answers.length,
+                  totalAnswers: question.answers.length,
                   ...question,
                };
             }),
@@ -118,7 +118,7 @@ class Questions extends React.Component {
                                  Newest
                               </option>
                               <option value='[["totalAnswers"], ["asc"]]'>
-                                 Unanswered
+                                 Least Answered
                               </option>
                            </select>
 
