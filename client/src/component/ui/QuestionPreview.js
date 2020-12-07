@@ -13,7 +13,7 @@ function QuestionPreview(props) {
          props.question.answers.length
       );
 
-      // console.log(`here's the answer text: `, props.question.answers[0].text);
+      console.log(`here's the answer text: `, props.question.answers.text);
 
       // if (props.question.answers[0].text === null) {
       //    props.question.answers.length = 0;
@@ -52,7 +52,10 @@ function QuestionPreview(props) {
    function checkIsNull() {
       if (props.question.answers[0].text === null) {
          props.question.answers.length = 0;
-         console.log("this question doesn't have any answers");
+         return true;
+         // console.log("this question doesn't have any answers");
+      } else {
+         return false;
       }
    }
 

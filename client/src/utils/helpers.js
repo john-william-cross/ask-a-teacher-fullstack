@@ -15,6 +15,16 @@ function checkQuestionIsOver(str, num) {
    else return false;
 }
 
+// export function safelyParseJson(value) {
+//    try {
+//       JSON.parse(value);
+//    } catch {
+//       // if error return the original value
+//       return value;
+//    }
+//    return JSON.parse(value);
+// }
+
 const QUESTION_MAX_CARD_CHARS = 500;
 
 export { checkQuestionIsOver, QUESTION_MAX_CARD_CHARS };
