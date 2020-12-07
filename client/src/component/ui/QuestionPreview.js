@@ -8,10 +8,18 @@ function QuestionPreview(props) {
    function storeAnswerableQuestion(e) {
       const id = e.target.id;
       console.log(`here's the question id: `, id);
+      console.log(
+         `here's the number of answers: `,
+         props.question.answers.length
+      );
 
       const match = props.allQuestions.find((question) => {
          return question.id === id;
       });
+
+      // checkHasAnswer() {
+
+      // }
 
       props.dispatch({
          type: actions.STORE_ANSWERABLE_QUESTION,

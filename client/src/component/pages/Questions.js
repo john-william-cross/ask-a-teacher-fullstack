@@ -29,7 +29,7 @@ class Questions extends React.Component {
          console.log("no user logged in: ", currentUser);
          return false;
       } else {
-         console.log("user exists: ", currentUser);
+         // console.log("user exists: ", currentUser);
          return true;
       }
    }
