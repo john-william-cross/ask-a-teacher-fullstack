@@ -215,6 +215,9 @@ class Question extends React.Component {
                                           )}
                                           onClick={() => {
                                              this.submitAnswer();
+                                             alert(
+                                                "Your answer has been submitted!"
+                                             );
                                           }}
                                        >
                                           Submit answer
