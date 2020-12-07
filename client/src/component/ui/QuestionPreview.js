@@ -13,13 +13,16 @@ function QuestionPreview(props) {
          props.question.answers.length
       );
 
+      // console.log(`here's the answer text: `, props.question.answers[0].text);
+
+      // if (props.question.answers[0].text === null) {
+      //    props.question.answers.length = 0;
+      //    console.log("this question doesn't have any answers");
+      // }
+
       const match = props.allQuestions.find((question) => {
          return question.id === id;
       });
-
-      // checkHasAnswer() {
-
-      // }
 
       props.dispatch({
          type: actions.STORE_ANSWERABLE_QUESTION,
@@ -37,6 +40,21 @@ function QuestionPreview(props) {
    //    const currentUser = props.currentUser;
    //    console.log("here's the current user: ", currentUser);
    // }
+   // function checkHasAnswer() {
+   //    console.log("inside checkHasAnswer");
+   //    if (props.question.answers.length) {
+   //       if ((props.question.answers.length = null)) {
+   //          console.log("length is 0, see: ", props.question.answers.length);
+   //       }
+   //    }
+   // }
+
+   function checkIsNull() {
+      if (props.question.answers[0].text === null) {
+         props.question.answers.length = 0;
+         console.log("this question doesn't have any answers");
+      }
+   }
 
    return (
       <>
@@ -56,6 +74,7 @@ function QuestionPreview(props) {
             Asked on {toDisplayDate(props.question.createdAt, "MMMM d, y")}.
          </p>
          <p className="text-muted asked-on-answers-num float-right">
+            {checkIsNull()}
             {props.question.answers.length} answers
             {/* {viewUser()} */}
          </p>
