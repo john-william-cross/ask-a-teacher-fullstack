@@ -36,18 +36,6 @@ function QuestionPreview(props) {
 
       // store the object inside the redux store /////use props.dispatch; won't need this.props.dispatch
    }
-   // function viewUser() {
-   //    const currentUser = props.currentUser;
-   //    console.log("here's the current user: ", currentUser);
-   // }
-   // function checkHasAnswer() {
-   //    console.log("inside checkHasAnswer");
-   //    if (props.question.answers.length) {
-   //       if ((props.question.answers.length = null)) {
-   //          console.log("length is 0, see: ", props.question.answers.length);
-   //       }
-   //    }
-   // }
 
    function checkIsNull() {
       if (props.question.answers[0].text === null) {
