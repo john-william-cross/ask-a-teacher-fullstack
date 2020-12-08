@@ -15,11 +15,6 @@ function QuestionPreview(props) {
 
       console.log(`here's the answer text: `, props.question.answers.text);
 
-      // if (props.question.answers[0].text === null) {
-      //    props.question.answers.length = 0;
-      //    console.log("this question doesn't have any answers");
-      // }
-
       const match = props.allQuestions.find((question) => {
          return question.id === id;
       });

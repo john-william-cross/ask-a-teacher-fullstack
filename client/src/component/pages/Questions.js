@@ -7,21 +7,54 @@ import axios from "axios";
 import { connect } from "react-redux";
 import actions from "../../store/actions";
 import { Link } from "react-router-dom";
+import { safelyParseJson } from "../../utils/helpers";
 
 // import allQuestions from "../../store/reducers/allQuestions";
 
 class Questions extends React.Component {
    constructor(props) {
       super(props);
+      const defaultOrder = '["createdAt", "desc"]';
+      const params = safelyParseJson(defaultOrder);
+      const orderedQuestions = orderBy(this.props.allQuestions, ...params);
+      this.state = {
+         order: defaultOrder,
+         displayedQuestions: orderedQuestions,
+         allQuestions: [],
+      };
 
+      console.log("this.state.order: ", this.state.order);
+      console.log("orderedQuestions: ", orderedQuestions);
+   }
+
+   /* 
+   PREV CONSTRUCTOR
+   constructor(props) {
+      super(props);
       this.state = {
          order: `[["createdAt"], ["desc"]]`,
          displayedQuestions: [],
          allQuestions: [],
       };
+   */
 
-      console.log("THIS.STATE.ORDER: ", this.state.order);
+   /* 
+   CONSTRUCTOR FROM PORTFOLIO
+   constructor(props) {
+      super(props);
+  
+      const defaultOrder = '["postedAt", "desc"]';
+      const params = safelyParseJson(defaultOrder);
+      const orderedProjects = orderBy(activeProjects, ...params);
+      this.state = {
+         activeProjects: orderedProjects,
+         isAdvanced: false,
+         displayedProjects: orderedProjects,
+         searchInput: "",
+         projectOrder: defaultOrder,
+      };
    }
+   */
 
    hasCurrentUser() {
       const currentUser = this.props.currentUser;
