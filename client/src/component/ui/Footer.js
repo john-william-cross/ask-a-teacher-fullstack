@@ -31,10 +31,10 @@ class Header extends React.Component {
                      {/*FIX SUBMIT AND CANCEL MARGINS */}
                      <div className="col-6">
                         <Link
-                           to="/LogIn"
+                           to="/"
                            className="contact float-left my-3 no-underline"
                         >
-                           Contact
+                           Home
                         </Link>
                      </div>
                      {/* 

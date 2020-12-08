@@ -14,6 +14,16 @@ class Landing extends React.Component {
          searchInput: "",
       };
    }
+   hasCurrentUser() {
+      const currentUser = this.props.currentUser;
+      if (Object.keys(currentUser).length === 0) {
+         // console.log("no user logged in: ", currentUser);
+         return false;
+      } else {
+         // console.log("user exists: ", currentUser);
+         return true;
+      }
+   }
 
    componentDidMount() {
       axios
@@ -84,6 +94,21 @@ class Landing extends React.Component {
                         style={{ textAlign: "center" }}
                      >
                         Ask a teacher
+                        <br></br>
+                        <span>
+                           {this.hasCurrentUser() === true && (
+                              <Link
+                                 to="/questions"
+                                 className="sign-out float-right my-3 no-underline text-right"
+                                 style={{ textAlign: "center" }}
+                              >
+                                 Take me directly to questions page
+                              </Link>
+                           )}
+                        </span>
+                     </p>
+                     <p>
+                        <div className="col-12 text-center"></div>
                      </p>
                      <input
                         className="form-control mt-7"
@@ -132,9 +157,11 @@ class Landing extends React.Component {
 }
 
 //mapStateToProps says take this global state and map these certain things to properties within this local state
-function mapStateToProps() {
+function mapStateToProps(state) {
    //return whatever we want to pass from the global state into the properties
-   return {};
+   return {
+      currentUser: state.currentUser,
+   };
 }
 
 export default connect(mapStateToProps)(Landing);

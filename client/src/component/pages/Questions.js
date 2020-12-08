@@ -28,18 +28,6 @@ class Questions extends React.Component {
    }
 
    /* 
-   PREV CONSTRUCTOR
-   constructor(props) {
-      super(props);
-      this.state = {
-         order: `[["createdAt"], ["desc"]]`,
-         displayedQuestions: [],
-         allQuestions: [],
-      };
-   */
-
-   /* 
-   CONSTRUCTOR FROM PORTFOLIO
    constructor(props) {
       super(props);
   
@@ -72,7 +60,10 @@ class Questions extends React.Component {
          .get(`/api/v1/questions?order=${this.state.order}`)
          .then((res) => {
             // handle success
+            console.log("THE CORRECT ORDER: ", this.state.order);
             const questions = res.data;
+            const order = this.state.order;
+
             // console.log(
             //    `here is a flattened pool of questions and their answers`,
             //    questions
