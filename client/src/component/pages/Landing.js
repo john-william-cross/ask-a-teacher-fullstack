@@ -99,10 +99,11 @@ class Landing extends React.Component {
                            {this.hasCurrentUser() === true && (
                               <Link
                                  to="/questions"
-                                 className="sign-out float-right my-3 no-underline text-right"
+                                 className="sign-out my-3 no-underline "
                                  style={{ textAlign: "center" }}
                               >
-                                 Take me directly to questions page
+                                 Enter a question, or click this link to go
+                                 directly to the questions page
                               </Link>
                            )}
                         </span>
