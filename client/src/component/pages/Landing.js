@@ -96,7 +96,7 @@ class Landing extends React.Component {
                         Ask a teacher
                         <br></br>
                         <span>
-                           {this.hasCurrentUser() === true && (
+                           {/* {this.hasCurrentUser() === true && (
                               <Link
                                  to="/questions"
                                  className="sign-out my-3 no-underline "
@@ -105,7 +105,7 @@ class Landing extends React.Component {
                                  Enter a question, or click this link to go
                                  directly to the questions page
                               </Link>
-                           )}
+                           )} */}
                         </span>
                      </p>
                      <p>

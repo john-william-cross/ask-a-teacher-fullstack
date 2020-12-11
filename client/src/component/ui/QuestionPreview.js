@@ -32,15 +32,15 @@ function QuestionPreview(props) {
       // store the object inside the redux store /////use props.dispatch; won't need this.props.dispatch
    }
 
-   function checkIsNull() {
-      if (props.question.answers[0].text === null) {
-         props.question.answers.length = 0;
-         return true;
-         // console.log("this question doesn't have any answers");
-      } else {
-         return false;
-      }
-   }
+   // function checkIsNull() {
+   //    if (props.question.answers[0].text === null) {
+   //       props.question.answers.length = 0;
+   //       return true;
+   //       // console.log("this question doesn't have any answers");
+   //    } else {
+   //       return false;
+   //    }
+   // }
 
    return (
       <>
@@ -60,7 +60,7 @@ function QuestionPreview(props) {
             Asked on {toDisplayDate(props.question.createdAt, "MMMM d, y")}.
          </p>
          <p className="text-muted asked-on-answers-num float-right">
-            {checkIsNull()}
+            {/* {checkIsNull()} */}
             {props.question.answers.length} answers
             {/* {viewUser()} */}
          </p>
