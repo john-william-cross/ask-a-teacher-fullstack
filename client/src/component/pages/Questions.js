@@ -13,41 +13,26 @@ import { safelyParseJson } from "../../utils/helpers";
 
 class Questions extends React.Component {
    constructor(props) {
+      console.log("constructor");
       super(props);
       const defaultOrder = '["createdAt", "desc"]';
       const params = safelyParseJson(defaultOrder);
       const orderedQuestions = orderBy(this.props.allQuestions, ...params);
+
       this.state = {
          order: defaultOrder,
          displayedQuestions: orderedQuestions,
          allQuestions: [],
       };
 
-      console.log("this.state.order: ", this.state.order);
-      console.log("orderedQuestions: ", orderedQuestions);
+      // console.log("this.state.order: ", this.state.order);
+      // console.log("orderedQuestions: ", orderedQuestions);
    }
-
-   /* 
-   constructor(props) {
-      super(props);
-  
-      const defaultOrder = '["postedAt", "desc"]';
-      const params = safelyParseJson(defaultOrder);
-      const orderedProjects = orderBy(activeProjects, ...params);
-      this.state = {
-         activeProjects: orderedProjects,
-         isAdvanced: false,
-         displayedProjects: orderedProjects,
-         searchInput: "",
-         projectOrder: defaultOrder,
-      };
-   }
-   */
 
    hasCurrentUser() {
       const currentUser = this.props.currentUser;
       if (Object.keys(currentUser).length === 0) {
-         console.log("no user logged in: ", currentUser);
+         // console.log("no user logged in: ", currentUser);
          return false;
       } else {
          // console.log("user exists: ", currentUser);
@@ -56,20 +41,17 @@ class Questions extends React.Component {
    }
 
    componentDidMount() {
+      console.log("componentDidMount");
       axios
          .get(`/api/v1/questions?order=${this.state.order}`)
          .then((res) => {
             // handle success
-            console.log("THE CORRECT ORDER: ", this.state.order);
+            // console.log("THE CORRECT ORDER: ", this.state.order);
             const questions = res.data;
+            // console.log("questions = ", questions);
             const order = this.state.order;
-
-            // console.log(
-            //    `here is a flattened pool of questions and their answers`,
-            //    questions
-            // );
-
-            console.log("STORE ALL QUESTIONS", actions.STORE_ALL_QUESTIONS);
+            // console.log("order = ", order);
+            // console.log("STORE ALL QUESTIONS", actions.STORE_ALL_QUESTIONS);
             this.props.dispatch({
                type: actions.STORE_ALL_QUESTIONS,
                payload: questions,
@@ -82,13 +64,20 @@ class Questions extends React.Component {
    }
 
    componentDidUpdate(prevProps) {
+      console.log("componentDidUpdate");
+      console.log(
+         "prevProps.allQuestions.length = ",
+         prevProps.allQuestions.length
+      );
+
+      const defaultOrder = '["createdAt", "desc"]';
+      const params = safelyParseJson(defaultOrder);
+      const orderedQuestions = orderBy(this.props.allQuestions, ...params);
+
       if (this.props.allQuestions !== prevProps.allQuestions) {
-         // console.log("no MATCH ");
+         console.log("this.props.allQuestions !== prevProps.allQuestions");
          this.setState({
-            displayedQuestions: orderBy(
-               this.props.allQuestions,
-               '[["totalAnswers"], ["asc"]]'
-            ),
+            displayedQuestions: orderedQuestions,
             allQuestions: this.props.allQuestions.map((question) => {
                return {
                   totalAnswers: question.answers.length,
@@ -102,10 +91,11 @@ class Questions extends React.Component {
    //REMEMBER THAT STATE IS ALWAYS AN OBJECT
 
    setOrder(e) {
+      console.log("setOrder");
       const newOrder = e.target.value; // '[(question) => {return question.answers.length}, ["asc"]]'
-      console.log(newOrder);
+      // console.log(newOrder);
       const parsedNewOrder = JSON.parse(newOrder);
-      console.log(parsedNewOrder);
+      // console.log(parsedNewOrder);
       this.setState({ order: newOrder }, () => {
          this.setState({
             displayedQuestions: orderBy(
@@ -117,6 +107,7 @@ class Questions extends React.Component {
    }
 
    render() {
+      console.log("render");
       return (
          <>
             <Header />
@@ -152,7 +143,7 @@ class Questions extends React.Component {
                                  Newest
                               </option>
                               <option value='[["totalAnswers"], ["asc"]]'>
-                                 Unanswered
+                                 Fewest Answers
                               </option>
                            </select>
 

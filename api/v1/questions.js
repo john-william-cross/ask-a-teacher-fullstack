@@ -62,7 +62,7 @@ router.get("/", (req, res) => {
             });
             console.log("question.answers.id = ", question.answers.id);
             if (question.answers[0].id === null) {
-               let removed = question.answers.splice(0, 1);
+               question.answers.splice(0, 1);
             }
             console.log("question.answers = ", question.answers);
          });
