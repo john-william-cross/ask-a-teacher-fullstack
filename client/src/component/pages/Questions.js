@@ -13,7 +13,7 @@ import { safelyParseJson } from "../../utils/helpers";
 
 class Questions extends React.Component {
    constructor(props) {
-      console.log("constructor");
+      // console.log("constructor");
       super(props);
       const defaultOrder = '["createdAt", "desc"]';
       const params = safelyParseJson(defaultOrder);
@@ -41,7 +41,7 @@ class Questions extends React.Component {
    }
 
    componentDidMount() {
-      console.log("componentDidMount");
+      // console.log("componentDidMount");
       axios
          .get(`/api/v1/questions?order=${this.state.order}`)
          .then((res) => {

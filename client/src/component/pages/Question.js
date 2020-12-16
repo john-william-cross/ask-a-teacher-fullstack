@@ -55,7 +55,7 @@ class Question extends React.Component {
             //    questions
             // );
 
-            console.log("STORE ALL QUESTIONS", actions.STORE_ALL_QUESTIONS);
+            // console.log("STORE ALL QUESTIONS", actions.STORE_ALL_QUESTIONS);
             this.props.dispatch({
                type: actions.STORE_ALL_QUESTIONS,
                payload: questions,
@@ -68,7 +68,7 @@ class Question extends React.Component {
    }
 
    submitAnswer() {
-      console.log("you clicked on `submit answer`");
+      // console.log("you clicked on `submit answer`");
       const answer = {
          id: getUuid(),
          text: this.state.answerInput,
@@ -77,13 +77,13 @@ class Question extends React.Component {
          questionId: this.props.answerableQuestion.id,
       };
       this.props.history.push("/questions");
-      console.log("here is the answer object: ", answer);
+      // console.log("here is the answer object: ", answer);
 
       // axios request send this user object to the server
       axios
          .post("/api/v1/answers", answer)
          .then((res) => {
-            console.log("here's the res: ", res);
+            // console.log("here's the res: ", res);
          })
          .catch((err) => {});
       // console log an answer on the server
