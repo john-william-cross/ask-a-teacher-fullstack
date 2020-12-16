@@ -70,9 +70,11 @@ class Questions extends React.Component {
          prevProps.allQuestions.length
       );
 
-      const defaultOrder = '["createdAt", "desc"]';
-      const params = safelyParseJson(defaultOrder);
-      const orderedQuestions = orderBy(this.props.allQuestions, ...params);
+      const orderedQuestions = orderBy(
+         this.props.allQuestions,
+         "createdAt",
+         "desc"
+      );
 
       if (this.props.allQuestions !== prevProps.allQuestions) {
          console.log("this.props.allQuestions !== prevProps.allQuestions");
