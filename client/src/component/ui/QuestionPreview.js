@@ -60,7 +60,10 @@ function QuestionPreview(props) {
             Asked on {toDisplayDate(props.question.createdAt, "MMMM d, y")}.
          </p>
          <p className="text-muted asked-on-answers-num float-right">
-            {/* {checkIsNull()} */}
+            {console.log(
+               "props.question.answers.length =",
+               props.question.answers.length
+            )}
             {props.question.answers.length} answers
             {/* {viewUser()} */}
          </p>
