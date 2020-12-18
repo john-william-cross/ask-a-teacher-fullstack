@@ -108,9 +108,7 @@ class Landing extends React.Component {
                            )} */}
                         </span>
                      </p>
-                     <p>
-                        <div className="col-12 text-center"></div>
-                     </p>
+
                      <input
                         className="form-control mt-7"
                         id="question-input-home-page"

@@ -25,7 +25,6 @@ class Questions extends React.Component {
          allQuestions: [],
       };
 
-      // console.log("this.state.order: ", this.state.order);
       // console.log("orderedQuestions: ", orderedQuestions);
    }
 
@@ -49,7 +48,7 @@ class Questions extends React.Component {
             // console.log("THE CORRECT ORDER: ", this.state.order);
             const questions = res.data;
             // console.log("questions = ", questions);
-            const order = this.state.order;
+            // const order = this.state.order;
             // console.log("order = ", order);
             // console.log("STORE ALL QUESTIONS", actions.STORE_ALL_QUESTIONS);
             this.props.dispatch({
@@ -64,11 +63,11 @@ class Questions extends React.Component {
    }
 
    componentDidUpdate(prevProps) {
-      console.log("componentDidUpdate");
-      console.log(
-         "prevProps.allQuestions.length = ",
-         prevProps.allQuestions.length
-      );
+      // console.log("componentDidUpdate");
+      // console.log(
+      //    "prevProps.allQuestions.length = ",
+      //    prevProps.allQuestions.length
+      // );
 
       const orderedQuestions = orderBy(
          this.props.allQuestions,
@@ -77,7 +76,7 @@ class Questions extends React.Component {
       );
 
       if (this.props.allQuestions !== prevProps.allQuestions) {
-         console.log("this.props.allQuestions !== prevProps.allQuestions");
+         // console.log("this.props.allQuestions !== prevProps.allQuestions");
          this.setState({
             displayedQuestions: orderedQuestions,
             allQuestions: this.props.allQuestions.map((question) => {
@@ -93,7 +92,7 @@ class Questions extends React.Component {
    //REMEMBER THAT STATE IS ALWAYS AN OBJECT
 
    setOrder(e) {
-      console.log("setOrder");
+      // console.log("setOrder");
       const newOrder = e.target.value; // '[(question) => {return question.answers.length}, ["asc"]]'
       // console.log(newOrder);
       const parsedNewOrder = JSON.parse(newOrder);
@@ -109,7 +108,6 @@ class Questions extends React.Component {
    }
 
    render() {
-      console.log("render");
       return (
          <>
             <Header />

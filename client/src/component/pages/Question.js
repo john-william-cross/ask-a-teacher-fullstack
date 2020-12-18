@@ -15,7 +15,11 @@ import actions from "../../store/actions";
 class Question extends React.Component {
    constructor(props) {
       super(props);
-      this.state = { answerInput: "" };
+      const answerLength = this.props.answerableQuestion.answers.length;
+      this.state = {
+         answerInput: "",
+         answerLength: answerLength,
+      };
    }
 
    //don't need API; data is coming from the global state
@@ -77,6 +81,7 @@ class Question extends React.Component {
          questionId: this.props.answerableQuestion.id,
       };
       this.props.history.push("/questions");
+
       // console.log("here is the answer object: ", answer);
 
       // axios request send this user object to the server

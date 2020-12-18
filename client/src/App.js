@@ -27,7 +27,7 @@ if (authToken) {
       });
       delete axios.defaults.headers.common["x-auth-token"];
    } else {
-      console.log("valid token");
+      // console.log("valid token");
       // store the user in global state / redux store (currentUser)
       store.dispatch({
          type: actions.UPDATE_CURRENT_USER,
