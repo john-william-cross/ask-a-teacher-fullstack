@@ -30,17 +30,9 @@ function QuestionPreview(props) {
       // the id is equal to the id of the question I clicked on.
 
       // store the object inside the redux store /////use props.dispatch; won't need this.props.dispatch
-   }
 
-   // function checkIsNull() {
-   //    if (props.question.answers[0].text === null) {
-   //       props.question.answers.length = 0;
-   //       return true;
-   //       // console.log("this question doesn't have any answers");
-   //    } else {
-   //       return false;
-   //    }
-   // }
+      // console.log("this question doesn't have any answers");
+   }
 
    return (
       <>
@@ -60,10 +52,10 @@ function QuestionPreview(props) {
             Asked on {toDisplayDate(props.question.createdAt, "MMMM d, y")}.
          </p>
          <p className="text-muted asked-on-answers-num float-right">
-            {/* {console.log(
+            {console.log(
                "QUESTION PREVIEW props.question.answers.length =",
                props.question.answers.length
-            )} */}
+            )}
             {props.question.answers.length} answers
             {/* {viewUser()} */}
          </p>

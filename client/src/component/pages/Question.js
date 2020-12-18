@@ -20,6 +20,7 @@ class Question extends React.Component {
          answerInput: "",
          answerLength: answerLength,
       };
+      console.log("answer length: ", answerLength);
    }
 
    //don't need API; data is coming from the global state
@@ -80,8 +81,11 @@ class Question extends React.Component {
          userId: this.props.currentUser.id,
          questionId: this.props.answerableQuestion.id,
       };
-      this.props.history.push("/questions");
 
+      const answerLength = this.props.answerableQuestion.answers.length;
+      this.setState({
+         answerLength: answerLength,
+      });
       // console.log("here is the answer object: ", answer);
 
       // axios request send this user object to the server
@@ -222,6 +226,9 @@ class Question extends React.Component {
                                              this.submitAnswer();
                                              alert(
                                                 "Your answer has been submitted!"
+                                             );
+                                             this.props.history.push(
+                                                "/questions"
                                              );
                                           }}
                                        >
