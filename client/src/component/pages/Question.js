@@ -14,6 +14,7 @@ import actions from "../../store/actions";
 
 class Question extends React.Component {
    constructor(props) {
+      console.log("question.constructor");
       super(props);
       const answerLength = this.props.answerableQuestion.answers.length;
       this.state = {
@@ -48,6 +49,7 @@ class Question extends React.Component {
    }
 
    componentDidMount() {
+      console.log("question.componentDidMount");
       axios
          .get(`/api/v1/questions?order=${this.state.order}`)
          .then((res) => {
@@ -64,6 +66,7 @@ class Question extends React.Component {
    }
 
    submitAnswer() {
+      console.log("question.submitAnswer");
       const answer = {
          id: getUuid(),
          text: this.state.answerInput,
@@ -73,12 +76,10 @@ class Question extends React.Component {
       };
 
       // TIM???
-      const answerLength = this.props.answerableQuestion.answers.length;
-      // console.log("FIRST ANSWER LENGTH: ", answerLength);
-      this.setState({
-         answerLength: answerLength,
-      });
-      // console.log("ANSWER LENGTH", answerLength + 1);
+      // const answerLength = this.props.answerableQuestion.answers.length;
+      // this.setState({
+      //    answerLength: answerLength,
+      // });
 
       // axios request send this user object to the server
       axios
@@ -216,9 +217,9 @@ class Question extends React.Component {
                                              )}
                                              onClick={() => {
                                                 this.submitAnswer();
-                                                alert(
-                                                   "Your answer has been submitted!"
-                                                );
+                                                //                                                alert(
+                                                //                                                   "Your answer has been submitted!"
+                                                //                                                );
                                              }}
                                           >
                                              Submit answer
@@ -260,6 +261,7 @@ function mapStateToProps(state) {
       answerableQuestion: state.answerableQuestion,
       creatableAnswer: state.creatableAnswer,
       currentUser: state.currentUser,
+      allQuestions: state.allQuestions,
    };
 }
 

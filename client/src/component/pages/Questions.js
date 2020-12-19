@@ -13,7 +13,7 @@ import { safelyParseJson } from "../../utils/helpers";
 
 class Questions extends React.Component {
    constructor(props) {
-      // console.log("constructor");
+      console.log("questions.constructor");
       super(props);
       const defaultOrder = '["createdAt", "desc"]';
       const params = safelyParseJson(defaultOrder);
@@ -24,8 +24,16 @@ class Questions extends React.Component {
          displayedQuestions: orderedQuestions,
          allQuestions: [],
       };
-
-      // console.log("orderedQuestions: ", orderedQuestions);
+      console.log(
+         "this.props.allQuestions.length: ",
+         this.props.allQuestions.length
+      );
+      if (this.props.allQuestions.length > 0) {
+         console.log(
+            "  question[0].answers.length",
+            this.props.allQuestions[0].answers.length
+         );
+      }
    }
 
    hasCurrentUser() {
@@ -40,7 +48,7 @@ class Questions extends React.Component {
    }
 
    componentDidMount() {
-      // console.log("componentDidMount");
+      console.log("questions.componentDidMount");
       axios
          .get(`/api/v1/questions?order=${this.state.order}`)
          .then((res) => {
@@ -60,14 +68,38 @@ class Questions extends React.Component {
             // handle error
             console.log(error);
          });
+      console.log(
+         "this.props.allQuestions.length: ",
+         this.props.allQuestions.length
+      );
+      if (this.props.allQuestions.length > 0) {
+         console.log(
+            "  question[0].answers.length",
+            this.props.allQuestions[0].answers.length
+         );
+      }
    }
-
+   componentWillMount() {
+      console.log("componentWillMount");
+      if (this.props.allQuestions.length > 0) {
+         console.log(
+            "  +question[0].answers.length",
+            this.props.allQuestions[0].answers.length
+         );
+      }
+   }
    componentDidUpdate(prevProps) {
-      // console.log("componentDidUpdate");
-      // console.log(
-      //    "prevProps.allQuestions.length = ",
-      //    prevProps.allQuestions.length
-      // );
+      console.log("questions.componentDidUpdate");
+      console.log(
+         "  +this.props.allQuestions.length: ",
+         this.props.allQuestions.length
+      );
+      if (this.props.allQuestions.length > 0) {
+         console.log(
+            "  +question[0].answers.length",
+            this.props.allQuestions[0].answers.length
+         );
+      }
 
       const orderedQuestions = orderBy(
          this.props.allQuestions,
@@ -76,7 +108,7 @@ class Questions extends React.Component {
       );
 
       if (this.props.allQuestions !== prevProps.allQuestions) {
-         // console.log("this.props.allQuestions !== prevProps.allQuestions");
+         console.log("this.props.allQuestions !== prevProps.allQuestions");
          this.setState({
             displayedQuestions: orderedQuestions,
             allQuestions: this.props.allQuestions.map((question) => {
@@ -87,12 +119,22 @@ class Questions extends React.Component {
             }),
          });
       }
+      console.log(
+         "  this.props.allQuestions.length: ",
+         this.props.allQuestions.length
+      );
+      if (this.props.allQuestions.length > 0) {
+         console.log(
+            "  question[0].answers.length",
+            this.props.allQuestions[0].answers.length
+         );
+      }
    }
 
    //REMEMBER THAT STATE IS ALWAYS AN OBJECT
 
    setOrder(e) {
-      // console.log("setOrder");
+      console.log("questions.setOrder");
       const newOrder = e.target.value; // '[(question) => {return question.answers.length}, ["asc"]]'
       // console.log(newOrder);
       const parsedNewOrder = JSON.parse(newOrder);

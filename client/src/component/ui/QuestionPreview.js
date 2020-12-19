@@ -5,15 +5,16 @@ import { connect } from "react-redux";
 import actions from "../../store/actions";
 
 function QuestionPreview(props) {
+   console.log("questionpreview");
    function storeAnswerableQuestion(e) {
+      console.log("questionpreview.storeAnswerableQuestion");
       const id = e.target.id;
+
       // console.log(`here's the question id: `, id);
       // console.log(
       //    `here's the number of answers for THIS QUESTION: `,
       //    props.question.answers.length
       // );
-
-      // console.log(`here's the answer text: `, props.question.answers.text);
 
       const match = props.allQuestions.find((question) => {
          return question.id === id;
@@ -30,8 +31,6 @@ function QuestionPreview(props) {
       // the id is equal to the id of the question I clicked on.
 
       // store the object inside the redux store /////use props.dispatch; won't need this.props.dispatch
-
-      // console.log("this question doesn't have any answers");
    }
 
    return (
