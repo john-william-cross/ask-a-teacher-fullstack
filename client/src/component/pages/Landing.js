@@ -33,7 +33,7 @@ class Landing extends React.Component {
          .then((res) => {
             // handle success
             const questions = res.data;
-            console.log(`here are the questions: `, questions);
+            // console.log(`here are the questions: `, questions);
 
             // console.log(`YOOOOOOOOOO`, actions.STORE_ALL_QUESTIONS);
             this.props.dispatch({

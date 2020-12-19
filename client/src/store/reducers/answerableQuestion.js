@@ -5,7 +5,7 @@ export default function answerableQuestion(answerableQuestion = {}, action) {
    let newAnswerableQuestion = { ...answerableQuestion };
    switch (action.type) {
       case actions.STORE_ANSWERABLE_QUESTION:
-         console.log("NOW INSIDE actions.STORE_ANSWERABLE_QUESTION");
+         // console.log("NOW INSIDE actions.STORE_ANSWERABLE_QUESTION");
          newAnswerableQuestion = action.payload.text;
          // newAnswerableQuestion.answers = action.payload.answers;
          newAnswerableQuestion.prevRoute = action.payload.prevRoute;

@@ -20,7 +20,7 @@ class Question extends React.Component {
          answerInput: "",
          answerLength: answerLength,
       };
-      console.log("answer length: ", answerLength);
+      // console.log("answer length: ", answerLength);
    }
 
    //don't need API; data is coming from the global state
@@ -37,10 +37,8 @@ class Question extends React.Component {
    hasCurrentUser() {
       const currentUser = this.props.currentUser;
       if (Object.keys(currentUser).length === 0) {
-         // console.log("no user logged in: ", currentUser);
          return false;
       } else {
-         // console.log("user exists: ", currentUser);
          return true;
       }
    }
@@ -53,14 +51,7 @@ class Question extends React.Component {
       axios
          .get(`/api/v1/questions?order=${this.state.order}`)
          .then((res) => {
-            // handle success
             const questions = res.data;
-            // console.log(
-            //    `here is a flattened pool of questions and their answers`,
-            //    questions
-            // );
-
-            // console.log("STORE ALL QUESTIONS", actions.STORE_ALL_QUESTIONS);
             this.props.dispatch({
                type: actions.STORE_ALL_QUESTIONS,
                payload: questions,
@@ -73,7 +64,6 @@ class Question extends React.Component {
    }
 
    submitAnswer() {
-      // console.log("you clicked on `submit answer`");
       const answer = {
          id: getUuid(),
          text: this.state.answerInput,
@@ -82,11 +72,13 @@ class Question extends React.Component {
          questionId: this.props.answerableQuestion.id,
       };
 
+      // TIM???
       const answerLength = this.props.answerableQuestion.answers.length;
+      // console.log("FIRST ANSWER LENGTH: ", answerLength);
       this.setState({
          answerLength: answerLength,
       });
-      // console.log("here is the answer object: ", answer);
+      // console.log("ANSWER LENGTH", answerLength + 1);
 
       // axios request send this user object to the server
       axios
@@ -214,28 +206,26 @@ class Question extends React.Component {
                                              {ANSWER_MAX_CARD_CHARS}
                                           </span>
                                        </p>
-
-                                       <button
-                                          className={classnames(
-                                             "mt-5 submit-answer-button logo-text-font btn btn-xm btn-outline-primary",
-                                             {
-                                                disabled: this.checkAnswerIsOver(),
-                                             }
-                                          )}
-                                          onClick={() => {
-                                             this.submitAnswer();
-                                             alert(
-                                                "Your answer has been submitted!"
-                                             );
-                                             this.props.history.push(
-                                                "/questions"
-                                             );
-                                          }}
-                                       >
-                                          Submit answer
-                                          {/* on click,  */}
-                                          {/* TODO: ADD TAKE ME BACK/CANCEL BUTTON */}
-                                       </button>
+                                       <Link to="/questions">
+                                          <button
+                                             className={classnames(
+                                                "mt-5 submit-answer-button logo-text-font btn btn-xm btn-outline-primary",
+                                                {
+                                                   disabled: this.checkAnswerIsOver(),
+                                                }
+                                             )}
+                                             onClick={() => {
+                                                this.submitAnswer();
+                                                alert(
+                                                   "Your answer has been submitted!"
+                                                );
+                                             }}
+                                          >
+                                             Submit answer
+                                             {/* on click,  */}
+                                             {/* TODO: ADD TAKE ME BACK/CANCEL BUTTON */}
+                                          </button>
+                                       </Link>
                                        <Link
                                           to={
                                              this.props.answerableQuestion

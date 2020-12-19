@@ -8,10 +8,10 @@ function QuestionPreview(props) {
    function storeAnswerableQuestion(e) {
       const id = e.target.id;
       // console.log(`here's the question id: `, id);
-      console.log(
-         `here's the number of answers for THIS QUESTION: `,
-         props.question.answers.length
-      );
+      // console.log(
+      //    `here's the number of answers for THIS QUESTION: `,
+      //    props.question.answers.length
+      // );
 
       // console.log(`here's the answer text: `, props.question.answers.text);
 
@@ -52,10 +52,10 @@ function QuestionPreview(props) {
             Asked on {toDisplayDate(props.question.createdAt, "MMMM d, y")}.
          </p>
          <p className="text-muted asked-on-answers-num float-right">
-            {console.log(
+            {/* {console.log(
                "QUESTION PREVIEW props.question.answers.length =",
                props.question.answers.length
-            )}
+            )} */}
             {props.question.answers.length} answers
             {/* {viewUser()} */}
          </p>

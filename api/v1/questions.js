@@ -60,11 +60,11 @@ router.get("/", (req, res) => {
                userId: questionAndAnswer.user_id,
                userHomeState: questionAndAnswer.user_home_state,
             });
-            console.log("question.answers.id = ", question.answers.id);
+            // console.log("question.answers.id = ", question.answers.id); //THIS LOGS IN THE CONSOLE
             if (question.answers[0].id === null) {
                question.answers.splice(0, 1);
             }
-            console.log("question.answers = ", question.answers);
+            // console.log("question.answers = ", question.answers); THIS LOGS IN THE CONSOLE
          });
          // console.log(`Here are the UNIQ QUESTIONS: `, uniqQuestions);
          res.json(uniqQuestions);

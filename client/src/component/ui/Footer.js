@@ -14,7 +14,7 @@ class Header extends React.Component {
    hasCurrentUser() {
       const currentUser = this.props.currentUser;
       if (Object.keys(currentUser).length === 0) {
-         console.log("no user logged in: ", currentUser);
+         // console.log("no user logged in: ", currentUser);
          return false;
       } else {
          // console.log("user exists: ", currentUser);

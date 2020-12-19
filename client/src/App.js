@@ -41,7 +41,7 @@ if (authToken) {
       }
    }
 } else {
-   console.log("no token");
+   // console.log("no token");
    delete axios.defaults.headers.common["x-auth-token"];
 }
 
