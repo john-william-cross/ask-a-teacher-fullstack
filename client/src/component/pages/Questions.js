@@ -80,7 +80,63 @@ class Questions extends React.Component {
       }
    }
    componentWillMount() {
-      console.log("componentWillMount");
+      console.log("     componentWillMount");
+      if (this.props.allQuestions.length > 0) {
+         console.log(
+            "  +question[0].answers.length",
+            this.props.allQuestions[0].answers.length
+         );
+      }
+   }
+   componentDidMount() {
+      console.log("     componentDidMount");
+      if (this.props.allQuestions.length > 0) {
+         console.log(
+            "  +question[0].answers.length",
+            this.props.allQuestions[0].answers.length
+         );
+      }
+   }
+   componentWillReceiveProps(newProps) {
+      console.log("     componentWillReceiveProps");
+      if (this.props.allQuestions.length > 0) {
+         console.log(
+            "  +question[0].answers.length",
+            this.props.allQuestions[0].answers.length
+         );
+      }
+   }
+   shouldComponentUpdate(newProps, newState) {
+      console.log("     shouldComponentUpdate");
+      if (this.props.allQuestions.length > 0) {
+         console.log(
+            "  +question[0].answers.length",
+            this.props.allQuestions[0].answers.length
+         );
+      }
+      return true;
+   }
+   componentWillUpdate(nextProps, nextState) {
+      console.log("     componentWillUpdate");
+      if (this.props.allQuestions.length > 0) {
+         console.log(
+            "  +question[0].answers.length",
+            this.props.allQuestions[0].answers.length
+         );
+      }
+   }
+
+   componentDidUpdate(prevProps, prevState) {
+      console.log("     componentDidUpdate");
+      if (this.props.allQuestions.length > 0) {
+         console.log(
+            "  +question[0].answers.length",
+            this.props.allQuestions[0].answers.length
+         );
+      }
+   }
+   componentWillUnmount() {
+      console.log("     componentWillUnmount");
       if (this.props.allQuestions.length > 0) {
          console.log(
             "  +question[0].answers.length",
