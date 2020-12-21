@@ -75,22 +75,11 @@ class Question extends React.Component {
          questionId: this.props.answerableQuestion.id,
       };
 
-      // TIM???
-      // const answerLength = this.props.answerableQuestion.answers.length;
-      // this.setState({
-      //    answerLength: answerLength,
-      // });
-
       // axios request send this user object to the server
       axios
          .post("/api/v1/answers", answer)
-         .then((res) => {
-            // console.log("here's the res: ", res);
-         })
+         .then((res) => {})
          .catch((err) => {});
-      // console log an answer on the server
-      // db.query to insert into the database
-      // send back all questions and answers and update redux store
    }
 
    render() {

@@ -52,13 +52,7 @@ class Questions extends React.Component {
       axios
          .get(`/api/v1/questions?order=${this.state.order}`)
          .then((res) => {
-            // handle success
-            // console.log("THE CORRECT ORDER: ", this.state.order);
             const questions = res.data;
-            // console.log("questions = ", questions);
-            // const order = this.state.order;
-            // console.log("order = ", order);
-            // console.log("STORE ALL QUESTIONS", actions.STORE_ALL_QUESTIONS);
             this.props.dispatch({
                type: actions.STORE_ALL_QUESTIONS,
                payload: questions,
@@ -75,71 +69,6 @@ class Questions extends React.Component {
       if (this.props.allQuestions.length > 0) {
          console.log(
             "  question[0].answers.length",
-            this.props.allQuestions[0].answers.length
-         );
-      }
-   }
-   componentWillMount() {
-      console.log("     componentWillMount");
-      if (this.props.allQuestions.length > 0) {
-         console.log(
-            "  +question[0].answers.length",
-            this.props.allQuestions[0].answers.length
-         );
-      }
-   }
-   componentDidMount() {
-      console.log("     componentDidMount");
-      if (this.props.allQuestions.length > 0) {
-         console.log(
-            "  +question[0].answers.length",
-            this.props.allQuestions[0].answers.length
-         );
-      }
-   }
-   componentWillReceiveProps(newProps) {
-      console.log("     componentWillReceiveProps");
-      if (this.props.allQuestions.length > 0) {
-         console.log(
-            "  +question[0].answers.length",
-            this.props.allQuestions[0].answers.length
-         );
-      }
-   }
-   shouldComponentUpdate(newProps, newState) {
-      console.log("     shouldComponentUpdate");
-      if (this.props.allQuestions.length > 0) {
-         console.log(
-            "  +question[0].answers.length",
-            this.props.allQuestions[0].answers.length
-         );
-      }
-      return true;
-   }
-   componentWillUpdate(nextProps, nextState) {
-      console.log("     componentWillUpdate");
-      if (this.props.allQuestions.length > 0) {
-         console.log(
-            "  +question[0].answers.length",
-            this.props.allQuestions[0].answers.length
-         );
-      }
-   }
-
-   componentDidUpdate(prevProps, prevState) {
-      console.log("     componentDidUpdate");
-      if (this.props.allQuestions.length > 0) {
-         console.log(
-            "  +question[0].answers.length",
-            this.props.allQuestions[0].answers.length
-         );
-      }
-   }
-   componentWillUnmount() {
-      console.log("     componentWillUnmount");
-      if (this.props.allQuestions.length > 0) {
-         console.log(
-            "  +question[0].answers.length",
             this.props.allQuestions[0].answers.length
          );
       }

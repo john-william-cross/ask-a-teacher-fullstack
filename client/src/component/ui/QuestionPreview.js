@@ -10,12 +10,6 @@ function QuestionPreview(props) {
       console.log("questionpreview.storeAnswerableQuestion");
       const id = e.target.id;
 
-      // console.log(`here's the question id: `, id);
-      // console.log(
-      //    `here's the number of answers for THIS QUESTION: `,
-      //    props.question.answers.length
-      // );
-
       const match = props.allQuestions.find((question) => {
          return question.id === id;
       });
