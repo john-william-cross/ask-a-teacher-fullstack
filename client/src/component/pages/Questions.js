@@ -56,44 +56,20 @@ class Questions extends React.Component {
             this.props.dispatch({
                type: actions.STORE_ALL_QUESTIONS,
                payload: questions,
-            }); //this loads the questions
+            });
          })
          .catch((error) => {
-            // handle error
             console.log(error);
          });
-      console.log(
-         "this.props.allQuestions.length: ",
-         this.props.allQuestions.length
-      );
-      if (this.props.allQuestions.length > 0) {
-         console.log(
-            "  question[0].answers.length",
-            this.props.allQuestions[0].answers.length
-         );
-      }
    }
-   componentDidUpdate(prevProps) {
-      console.log("questions.componentDidUpdate");
-      console.log(
-         "  +this.props.allQuestions.length: ",
-         this.props.allQuestions.length
-      );
-      if (this.props.allQuestions.length > 0) {
-         console.log(
-            "  +question[0].answers.length",
-            this.props.allQuestions[0].answers.length
-         );
-      }
 
+   componentDidUpdate(prevProps) {
       const orderedQuestions = orderBy(
          this.props.allQuestions,
          "createdAt",
          "desc"
       );
-
       if (this.props.allQuestions !== prevProps.allQuestions) {
-         console.log("this.props.allQuestions !== prevProps.allQuestions");
          this.setState({
             displayedQuestions: orderedQuestions,
             allQuestions: this.props.allQuestions.map((question) => {
@@ -103,16 +79,6 @@ class Questions extends React.Component {
                };
             }),
          });
-      }
-      console.log(
-         "  this.props.allQuestions.length: ",
-         this.props.allQuestions.length
-      );
-      if (this.props.allQuestions.length > 0) {
-         console.log(
-            "  question[0].answers.length",
-            this.props.allQuestions[0].answers.length
-         );
       }
    }
 
