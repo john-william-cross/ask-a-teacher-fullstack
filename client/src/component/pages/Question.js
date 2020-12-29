@@ -78,14 +78,17 @@ class Question extends React.Component {
       // axios request send this user object to the server
       axios
          .post("/api/v1/answers", answer)
+
          .then((res) => {
             this.props.dispatch({
                type: actions.UPDATE_CREATABLE_ANSWER,
-               payload: answer,
+               payload: res.data,
             });
          })
-         .catch((err) => {});
-
+         .catch((err) => {
+            console.log("POST ERR: ", err);
+         });
+      console.log("HIT POST");
       axios
          .get(`/api/v1/questions?order=${this.state.order}`)
          .then((res) => {
@@ -95,9 +98,10 @@ class Question extends React.Component {
                payload: questions,
             });
          })
-         .catch((error) => {
-            console.log(error);
+         .catch((err) => {
+            console.log("GET ERR: ", err);
          });
+      console.log("HIT GET");
       //can we do a get request right after this post request?
    }
 
