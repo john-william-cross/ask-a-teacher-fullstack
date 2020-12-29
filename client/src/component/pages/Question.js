@@ -82,7 +82,7 @@ class Question extends React.Component {
          .then((res) => {
             this.props.dispatch({
                type: actions.UPDATE_CREATABLE_ANSWER,
-               payload: res.data,
+               payload: answer,
             });
          })
          .catch((err) => {
@@ -97,7 +97,9 @@ class Question extends React.Component {
                type: actions.STORE_ALL_QUESTIONS,
                payload: questions,
             });
+            this.props.history.push("/questions");
          })
+
          .catch((err) => {
             console.log("GET ERR: ", err);
          });
@@ -219,26 +221,24 @@ class Question extends React.Component {
                                              {ANSWER_MAX_CARD_CHARS}
                                           </span>
                                        </p>
-                                       <Link to="/questions">
-                                          <button
-                                             className={classnames(
-                                                "mt-5 submit-answer-button logo-text-font btn btn-xm btn-outline-primary",
-                                                {
-                                                   disabled: this.checkAnswerIsOver(),
-                                                }
-                                             )}
-                                             onClick={() => {
-                                                this.submitAnswer();
-                                                //                                                alert(
-                                                //                                                   "Your answer has been submitted!"
-                                                //                                                );
-                                             }}
-                                          >
-                                             Submit answer
-                                             {/* on click,  */}
-                                             {/* TODO: ADD TAKE ME BACK/CANCEL BUTTON */}
-                                          </button>
-                                       </Link>
+                                       <button
+                                          className={classnames(
+                                             "mt-5 submit-answer-button logo-text-font btn btn-xm btn-outline-primary",
+                                             {
+                                                disabled: this.checkAnswerIsOver(),
+                                             }
+                                          )}
+                                          onClick={() => {
+                                             this.submitAnswer();
+                                             //                                                alert(
+                                             //                                                   "Your answer has been submitted!"
+                                             //                                                );
+                                          }}
+                                       >
+                                          Submit answer
+                                          {/* on click,  */}
+                                          {/* TODO: ADD TAKE ME BACK/CANCEL BUTTON */}
+                                       </button>
                                        <Link
                                           to={
                                              this.props.answerableQuestion
